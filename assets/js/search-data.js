@@ -86,7 +86,10 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/smooth_manifolds/";
-            },},{id: "news-release-of-alphachimp-tracking-and-behavior-recognition-of-chimpanzees",
+            },},{id: "news-i-m-excited-to-share-two-new-articles-on-my-blog-notes-for-diffusion-models-and-notes-for-adjoint-methods-these-articles-are-currently-being-refined-to-ensure-accuracy-and-clarity",
+          title: 'I’m excited to share two new articles on my blog: Notes for Diffusion...',
+          description: "",
+          section: "News",},{id: "news-release-of-alphachimp-tracking-and-behavior-recognition-of-chimpanzees",
           title: 'Release of AlphaChimp: Tracking and Behavior Recognition of Chimpanzees.',
           description: "",
           section: "News",},{id: "news-release-of-clone-holistic-closed-loop-whole-body-teleoperation-for-long-horizon-humanoid-control",
