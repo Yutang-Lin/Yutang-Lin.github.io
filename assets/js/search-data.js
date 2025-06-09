@@ -44,7 +44,29 @@ ninja.data = [{
               handler: () => {
                 window.location.href = "/books/";
               },
-            },{id: "books-a-brief-history-of-chinese-philosophy",
+            },{id: "post-introduction-of-ajoint-methods",
+        
+          title: "Introduction of Ajoint Methods",
+        
+        description: "The adjoint method, introduced in the 2018 neural ODE paper, provides an efficient approach for computing gradients in neural ODEs. This article presents a detailed mathematical derivation of the adjoint method&#39;s core formulas and their applications.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/ajoint-methods/";
+          
+        },
+      },{id: "post-introduction-of-diffusion-models",
+        
+          title: "Introduction of Diffusion Models",
+        
+        description: "Diffusion models are an important class of modern generative models. This article provides a brief introduction to distribution-based generative algorithms such as diffusion, SDE, and consistency models based on my personal understanding.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/diffusion-models/";
+          
+        },
+      },{id: "books-a-brief-history-of-chinese-philosophy",
           title: 'A Brief History of Chinese Philosophy',
           description: "",
           section: "Books",handler: () => {
