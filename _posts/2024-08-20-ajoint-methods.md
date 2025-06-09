@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Introduction of Ajoint Methods
+title: Notes for Ajoint Methods
 date: 2024-08-20 11:12:00-0400
 description: The adjoint method, introduced in the 2018 neural ODE paper, provides an efficient approach for computing gradients in neural ODEs. This article presents a detailed mathematical derivation of the adjoint method's core formulas and their applications.
 tags: formatting math

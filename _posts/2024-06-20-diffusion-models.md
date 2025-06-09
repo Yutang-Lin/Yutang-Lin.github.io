@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Introduction of Diffusion Models
+title: Notes for Diffusion Models
 date: 2024-06-20 11:12:00-0400
 description: Diffusion models are an important class of modern generative models. This article provides a brief introduction to distribution-based generative algorithms such as diffusion, SDE, and consistency models based on my personal understanding.
 tags: formatting math
