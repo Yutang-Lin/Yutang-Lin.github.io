@@ -7,7 +7,7 @@ first_name: Yutang
 middle_name: 
 last_name: Lin
 contact_note: >
-  Please contact me via email: yutang.lin@stu.pku.edu.cn
+  If needed, please contact me via email first.
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
   A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 footer_text: >
@@ -16,7 +16,7 @@ footer_text: >
   Photos from <a href="https://unsplash.com" target="_blank">Unsplash</a>.
 keywords: jekyll, jekyll-theme, academic-website, portfolio-website # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
-icon: ⚛️ # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
+icon: 🤪 # ⚛️  # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
 url: https://yutang-lin.github.io # the base hostname & protocol for your site
 baseurl: # the subpath of your site, e.g. /blog/. Leave blank for root
@@ -86,8 +86,8 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name: al-folio # blog_name will be displayed in your blog page
-blog_description: a simple whitespace theme for academics
+blog_name: Yutang Lin's blog # blog_name will be displayed in your blog page
+blog_description: A journey through mathematics, philosophy, and artificial intelligence, where I share book reviews, research insights, and personal explorations in computer vision, robotics, and reinforcement learning.
 permalink: /blog/:year/:title/
 lsi: false # produce an index for related posts
 
@@ -122,12 +122,12 @@ disqus_shortname: al-folio # put your disqus shortname
 # If you have blog posts published on medium.com or other external sources,
 # you can display them in your blog by adding a link to the RSS feed.
 external_sources:
-  - name: medium.com
-    rss_url: https://medium.com/@al-folio/feed
-  - name: Google Blog
-    posts:
-      - url: https://blog.google/technology/ai/google-gemini-update-flash-ai-assistant-io-2024/
-        published_date: 2024-05-14
+  # - name: medium.com
+  #   rss_url: https://medium.com/@al-folio/feed
+  # - name: Google Blog
+  #   posts:
+  #     - url: https://blog.google/technology/ai/google-gemini-update-flash-ai-assistant-io-2024/
+  #       published_date: 2024-05-14
 
 # -----------------------------------------------------------------------------
 # Newsletter
@@ -263,8 +263,8 @@ display_categories: ["external-services"] # these categories will be displayed o
 # -----------------------------------------------------------------------------
 
 scholar:
-  last_name: [Einstein]
-  first_name: [Albert, A.]
+  last_name: [Lin]
+  first_name: [Yutang]
 
   style: apa
   locale: en
@@ -286,6 +286,11 @@ scholar:
   query: "@*"
   group_by: year
   group_order: descending
+
+  sort_by: year, month
+  order: descending, descending
+  type_order: [unpublished, article, inbook, conference, incollections, inproceedings, proceedings, book, misc, techreport]
+  type_names: {unpublished: Pre-Prints}
 
 # Display different badges withs stats for your publications
 # Customize badge behavior in _layouts/bib.liquid

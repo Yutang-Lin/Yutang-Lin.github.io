@@ -555,6 +555,16 @@ footer.sticky-bottom {
   h1 {
     color: var(--global-theme-color);
     font-size: 5rem;
+    // font-weight: bold;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+    color: var(--global-text-color);
+    margin-top: 1rem;
+    text-align: left;
+    font-weight: 200;
+    font-style: italic;
   }
 }
 

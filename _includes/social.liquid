@@ -1,4 +1,5 @@
 {% for social in site.data.socials %}
+  <font size=10>
   {% case social[0] %}
     {% when 'acm_id' %}
       <a href="https://dl.acm.org/profile/{{ social[1] }}/" title="ACM DL"><i class="ai ai-acm"></i></a>
@@ -107,4 +108,5 @@
         {% endif %}
       </a>
   {% endcase %}
+  </font size>
 {% endfor %}
