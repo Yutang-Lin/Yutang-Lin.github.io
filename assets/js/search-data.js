@@ -44,9 +44,9 @@ ninja.data = [{
               handler: () => {
                 window.location.href = "/books/";
               },
-            },{id: "post-introduction-of-ajoint-methods",
+            },{id: "post-notes-for-ajoint-methods",
         
-          title: "Introduction of Ajoint Methods",
+          title: "Notes for Ajoint Methods",
         
         description: "The adjoint method, introduced in the 2018 neural ODE paper, provides an efficient approach for computing gradients in neural ODEs. This article presents a detailed mathematical derivation of the adjoint method&#39;s core formulas and their applications.",
         section: "Posts",
@@ -55,9 +55,9 @@ ninja.data = [{
             window.location.href = "/blog/2024/ajoint-methods/";
           
         },
-      },{id: "post-introduction-of-diffusion-models",
+      },{id: "post-notes-for-diffusion-models",
         
-          title: "Introduction of Diffusion Models",
+          title: "Notes for Diffusion Models",
         
         description: "Diffusion models are an important class of modern generative models. This article provides a brief introduction to distribution-based generative algorithms such as diffusion, SDE, and consistency models based on my personal understanding.",
         section: "Posts",
