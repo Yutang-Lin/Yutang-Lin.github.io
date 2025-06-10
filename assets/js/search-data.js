@@ -117,6 +117,20 @@ ninja.data = [{
           window.open("https://orcid.org/0009-0004-4933-1203", "_blank");
         },
       },{
+        id: 'social-wechat_qr',
+        title: 'Wechat_qr',
+        section: 'Socials',
+        handler: () => {
+          window.open("", "_blank");
+        },
+      },{
+        id: 'social-dblp',
+        title: 'DBLP',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://dblp.uni-trier.de/pid/165/0916-1.html", "_blank");
+        },
+      },{
         id: 'social-scholar',
         title: 'Google Scholar',
         section: 'Socials',
