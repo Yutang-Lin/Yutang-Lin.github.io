@@ -23,8 +23,18 @@
     ]
   },
   "work": [
+    {
+      "name": "CoRe Lab, Peking University",
+      "position": "Student Researcher",
+      "url": "https://example.com",
+      "startDate": "2024-02-23",
+      "endDate": "",
+      "summary": "",
+      "highlights": ["Humanoids", "CV4Animals"]
+    }
   ],
   "volunteer": [
+
   ],
   "education": [
     {
