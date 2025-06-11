@@ -4,38 +4,43 @@
 @string{aps = {American Physical Society,}}
 
 @unpublished{clone,
+      abbr={arXiv},
       title={CLONE: Holistic Closed-Loop Whole-Body Teleoperation for Long-Horizon Humanoid Control}, 
       author={Yixuan Li* and Yutang Lin* and Jieming Cui and Tengyu Liu and Wei Liang† and Yixin Zhu† and Siyuan Huang†},
       year={2025},
       month={6},
       archivePrefix={arXiv},
+      arxiv={2506.08931},
 
       abstract={Humanoid teleoperation plays a vital role in demonstrating and collecting data for complex humanoid-scene interactions. However, current teleoperation systems face critical limitations: they decouple upper- and lower-body control to maintain stability, restricting natural coordination, and operate open-loop without real-time position feedback, leading to accumulated drift. The fundamental challenge is achieving precise, coordinated whole-body teleoperation over extended durations while maintaining accurate global positioning. Here we show that an MoE-based teleoperation system, CLONE, with closed-loop error correction enables unprecedented whole-body teleoperation fidelity, maintaining minimal positional drift over long-range trajectories using only head and hand tracking from an MR headset. Unlike previous methods that either sacrifice coordination for stability or suffer from unbounded drift, CLONE learns diverse motion skills while preventing tracking error accumulation through real-time feedback, enabling complex coordinated movements such as "picking up objects from the ground." These results establish a new milestone for whole-body humanoid teleoperation for long-horizon humanoid-scene interaction tasks.},
-
       primaryClass={cs.RO},
       url={https://humanoidclone.github.io/CLONE.github.io/}, 
       website={https://humanoidclone.github.io/CLONE.github.io/},
+      pdf={clone.pdf},
       video={https://humanoid-clone.github.io/resources/overview_v0.1.mp4},
+      code={https://github.com/humanoid-clone/CLONE},
       preview={clone.gif},
 
       selected={true}
 }
 
 @unpublished{alphachimp,
+      abbr={arXiv},
       title={AlphaChimp: Tracking and Behavior Recognition of Chimpanzees}, 
       author={Xiaoxuan Ma* and Yutang Lin* and Yuan Xu and Stephan P. Kaufhold and Jack Terwilliger and Andres Meza and Yixin Zhu† and Federico Rossano† and Yizhou Wang†},
       year={2024},
       month={10},
-      eprint={2410.17136},
       archivePrefix={arXiv},
+      arxiv={2410.17136},
 
       abstract={Understanding non-human primate behavior is crucial for improving animal welfare, modeling social behavior, and gaining insights into both distinctly human and shared behaviors. Despite recent advances in computer vision, automated analysis of primate behavior remains challenging due to the complexity of their social interactions and the lack of specialized algorithms. Existing methods often struggle with the nuanced behaviors and frequent occlusions characteristic of primate social dynamics. This study aims to develop an effective method for automated detection, tracking, and recognition of chimpanzee behaviors in video footage. Here we show that our proposed method, AlphaChimp, an end-to-end approach that simultaneously detects chimpanzee positions and estimates behavior categories from videos, significantly outperforms existing methods in behavior recognition. AlphaChimp achieves approximately 10% higher tracking accuracy and a 20% improvement in behavior recognition compared to state-of-the-art methods, particularly excelling in the recognition of social behaviors. This superior performance stems from AlphaChimp’s innovative architecture, which integrates temporal feature fusion with a Transformer-based self-attention mechanism, enabling more effective capture and interpretation of complex social interactions among chimpanzees. Our approach bridges the gap between computer vision and primatology, enhancing technical capabilities and deepening our understanding of primate communication and sociality. We release our code and models and hope this will facilitate future research in animal social dynamics. This work contributes to ethology, cognitive science, and artificial intelligence, offering new perspectives on social intelligence.},
 
       primaryClass={cs.CV},
       url={https://arxiv.org/abs/2410.17136},
       website={https://sites.google.com/view/alphachimp/home/}, 
-      pdf={https://arxiv.org/pdf/2410.17136},
+      pdf={alphachimp.pdf},
       video={https://drive.google.com/file/d/15G950d5jPrdssjEQd6GB2jEU1Xcd8EVi/view},
+      code={https://github.com/ShirleyMaxx/AlphaChimp},
       preview={alphachimp.gif},
 
       selected={true}
