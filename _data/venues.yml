@@ -11,3 +11,7 @@
 "arXiv":
   url: https://arxiv.org/
   color: "#b31b1b"
+
+"CoRL":
+  url: https://www.corl.org/
+  color: "#ffa500"
