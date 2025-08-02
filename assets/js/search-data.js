@@ -95,6 +95,9 @@ ninja.data = [{
           section: "News",},{id: "news-release-of-clone-holistic-closed-loop-whole-body-teleoperation-for-long-horizon-humanoid-control",
           title: 'Release of CLONE: Holistic Closed-Loop Whole-Body Teleoperation for Long-Horizon Humanoid Control.',
           description: "",
+          section: "News",},{id: "news-clone-is-accepted-by-corl-2025",
+          title: 'CLONE is ACCEPTED🔥 by CoRL 2025.',
+          description: "",
           section: "News",},{
         id: 'social-email',
         title: 'email',
