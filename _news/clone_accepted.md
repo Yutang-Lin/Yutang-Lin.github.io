@@ -6,4 +6,4 @@ inline: true
 related_posts: false
 ---
 
-[**CLONE**](https://humanoidclone.github.io/CLONE.github.io/) is **ACCEPTED**🔥 by [CoRL 2025](https://www.corl.org/).
+🔥 [**CLONE**](https://humanoidclone.github.io/CLONE.github.io/) is **accepted** by [CoRL 2025](https://www.corl.org/).
