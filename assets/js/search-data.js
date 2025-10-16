@@ -101,6 +101,9 @@ ninja.data = [{
           section: "News",},{id: "news-clone-is-accepted-by-corl-2025",
           title: '🔥 CLONE is accepted by CoRL 2025.',
           description: "",
+          section: "News",},{id: "news-release-of-cola-learning-human-humanoid-coordination-for-collaborative-object-carrying",
+          title: 'Release of COLA: Learning Human-Humanoid Coordination for Collaborative Object Carrying.',
+          description: "",
           section: "News",},{
         id: 'social-email',
         title: 'email',
