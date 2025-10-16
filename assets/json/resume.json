@@ -6,7 +6,7 @@
     "email": "yutang.lin@stu.pku.edu.cn",
     "phone": "",
     "url": "https://yutang-lin.github.io/",
-    "summary": "A sophomore student in Peking University, advised by Prof. Yixin Zhu, Peking University. Interested in Computer Vision, Robotics, and Reinforcement Learning.",
+    "summary": "A junior student in Peking University, advised by Prof. Yixin Zhu, Peking University. Interested in Computer Vision, Robotics, and Reinforcement Learning.",
     "location": {
       "address": "Yiheyuan Road",
       "postalCode": "",
@@ -135,10 +135,17 @@
     },
     {
       "name": "CLONE: Holistic Closed-Loop Humanoid Whole-Body Teleoperation for Long-Horizon Tasks",
-      "publisher": "arXiv",
+      "publisher": "CoRL",
       "releaseDate": "2025-06-20",
       "url": "https://humanoid-clone.github.io/",
       "summary": "CLONE employs an MoE-based policy with closed-loop error correction for holistic humanoid teleoperation, enabling capabilities previously unattainable with existing systems—such as whole-body coordination and long-horizon task execution. "
+    },
+    {
+      "name": "COLA: Learning Human-Humanoid Coordination for Collaborative Object Carrying",
+      "publisher": "arXiv",
+      "releaseDate": "2025-10-16",
+      "url": "https://yushi-du.github.io/COLA/",
+      "summary": "COLA is trained in a closed-loop environment with dynamic object interactions to predict object motion patterns and human intentions implicitly, enabling compliant collaboration to maintain load balance through coordinated trajectory planning. "
     }
   ],
   
