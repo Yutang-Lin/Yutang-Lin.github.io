@@ -4,6 +4,9 @@ github_users:
 repo_description_lines_max: 2
 
 github_repos:
-  - ShirleyMaxx/AlphaChimp
-  - humanoid-clone/CLONE/
+  - humanoid-clone/CLONE
+  - Yutang-Lin/Sim2Everything
   - Yutang-Lin/VisionWrapper
+  - Yushi-Du/COLA_Code
+  - ShirleyMaxx/AlphaChimp
+  
