@@ -15,3 +15,7 @@
 "CoRL":
   url: https://www.corl.org/
   color: "#ffa500"
+
+"CVPR Workshop":
+  url: https://cvpr.thecvf.com/
+  color: "#00369f"

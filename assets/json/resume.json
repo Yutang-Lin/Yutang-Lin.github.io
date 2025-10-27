@@ -137,14 +137,14 @@
   "publications": [
     {
       "name": "AlphaChimp: Tracking and Behavior Recognition of Chimpanzees",
-      "publisher": "arXiv",
+      "publisher": "CVPR 2025 Workshop",
       "releaseDate": "2024-10-22",
       "url": "https://sites.google.com/view/alphachimp/home",
       "summary": "We propose AlphaChimp, an end-to-end approach that simultaneously detects chimpanzee positions and estimates behavior categories from videos."
     },
     {
       "name": "CLONE: Holistic Closed-Loop Humanoid Whole-Body Teleoperation for Long-Horizon Tasks",
-      "publisher": "CoRL",
+      "publisher": "CoRL 2025",
       "releaseDate": "2025-06-20",
       "url": "https://humanoid-clone.github.io/",
       "summary": "CLONE employs an MoE-based policy with closed-loop error correction for holistic humanoid teleoperation, enabling capabilities previously unattainable with existing systems—such as whole-body coordination and long-horizon task execution. "
