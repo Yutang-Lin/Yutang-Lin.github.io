@@ -87,7 +87,7 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # -----------------------------------------------------------------------------
 
 blog_name: Yutang Lin's blog # blog_name will be displayed in your blog page
-blog_description: A journey through mathematics, philosophy, and artificial intelligence, where I share book reviews, research insights, and personal explorations in computer vision, robotics, and reinforcement learning.
+blog_description: A journey through mathematics, philosophy, and robotics, where I share book reviews, research insights, and personal explorations in computer vision, robotics, and reinforcement learning.
 permalink: /blog/:year/:title/
 lsi: false # produce an index for related posts
 
