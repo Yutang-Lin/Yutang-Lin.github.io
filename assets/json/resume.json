@@ -6,7 +6,7 @@
     "email": "yutang.lin@stu.pku.edu.cn",
     "phone": "",
     "url": "https://yutang-lin.github.io/",
-    "summary": "A junior student in Peking University, advised by Prof. Yixin Zhu, Peking University. Undertaking internship at General Vision Lab, BIGAI. Interested in Computer Vision, Robotics, and Reinforcement Learning.",
+    "summary": "A junior student in Peking University, advised by Prof. Yixin Zhu, Peking University. Interested in Computer Vision, Robotics, and Reinforcement Learning.",
     "location": {
       "address": "Yiheyuan Road",
       "postalCode": "",
@@ -32,15 +32,6 @@
       "summary": "",
       "highlights": ["Humanoids", "CV4Animals"]
     },
-    {
-      "name": "General Vision Lab, BIGAI",
-      "position": "Research Intern",
-      "url": "https://eng.bigai.ai/",
-      "startDate": "2024-11-01",
-      "endDate": "",
-      "summary": "",
-      "highlights": ["Humanoids"]
-    }
   ],
   "volunteer": [
 
