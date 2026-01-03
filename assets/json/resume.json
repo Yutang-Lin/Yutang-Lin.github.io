@@ -14,13 +14,7 @@
       "countryCode": "CN",
       "region": "Beijing"
     },
-    "profiles": [
-      {
-        "network": "Twitter",
-        "username": "AlbertEinstein",
-        "url": "https://twitter.com/AlbertEinstein"
-      }
-    ]
+    "profiles": []
   },
   "work": [
     {
@@ -31,7 +25,7 @@
       "endDate": "",
       "summary": "",
       "highlights": ["Humanoids", "CV4Animals"]
-    },
+    }
   ],
   "volunteer": [
 
@@ -62,8 +56,9 @@
       "endDate": "",
       "score": "",
       "courses": [
-        "Computer Vision",
         "Machine Learning",
+        "Computer Vision",
+        "Robotics",
         "Reinforcement Learning",
         "Applied Stochastical Process",
         "Differential Manifolds"
