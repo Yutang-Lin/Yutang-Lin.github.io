@@ -25,6 +25,15 @@
       "endDate": "",
       "summary": "",
       "highlights": ["Humanoids", "CV4Animals"]
+    },
+    {
+      "name": "Amazon Frontier AI & Robotics",
+      "position": "Applied Scientist Intern",
+      "url": "",
+      "startDate": "2026-01-20",
+      "endDate": "",
+      "summary": "",
+      "highlights": ["Humanoids"]
     }
   ],
   "volunteer": [
@@ -66,6 +75,12 @@
     }
   ],
   "awards": [
+    {
+      "title": "Yuanpei Scholar",
+      "date": "2025",
+      "awarder": "Yuanpei College, Peking University",
+      "summary": ""
+    },
     {
       "title": "Soong Ching-ling Scholarship",
       "date": "2024",
@@ -137,7 +152,7 @@
     },
     {
       "name": "COLA: Learning Human-Humanoid Coordination for Collaborative Object Carrying",
-      "publisher": "arXiv",
+      "publisher": "ICRA 2026",
       "releaseDate": "2025-10-16",
       "url": "https://yushi-du.github.io/COLA/",
       "summary": "COLA is trained in a closed-loop environment with dynamic object interactions to predict object motion patterns and human intentions implicitly, enabling compliant collaboration to maintain load balance through coordinated trajectory planning. "

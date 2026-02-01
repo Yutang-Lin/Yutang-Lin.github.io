@@ -8,6 +8,9 @@
 "Vision":
   color: "#009f36"
 
+"Coming Soon":
+  color: "#808080"
+
 "arXiv":
   url: https://arxiv.org/
   color: "#b31b1b"
@@ -19,3 +22,7 @@
 "CVPR Workshop":
   url: https://cvpr.thecvf.com/
   color: "#00369f"
+
+"ICRA":
+  url: https://icra.ieee.org/
+  color: "#1f77b4"

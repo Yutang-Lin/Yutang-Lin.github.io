@@ -26,4 +26,6 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-Hi 👋🏻! I'm a junior undergraduate student in **Tong Class** within [Yuanpei College](https://yuanpei.pku.edu.cn/), [Peking University](https://english.pku.edu.cn/). I am very fortunate to be advised by [Prof. Yixin Zhu](https://yzhu.io/). My research interests focus on the intersection of **Robotics** 🤖, **Computer Vision** 👁️ and **Reinforcement Learning** 🎮, where I explore how intelligent systems perceive, learn, and interact. Beyond research, I enjoy staying active and competitive on the tennis court 🎾. I am passionate about advancing robot capabilities and their practical applications. I welcome discussions, collaborative projects, or shared interests—feel free to connect!
+Hi 👋🏻! I'm a junior undergraduate student in **Tong Class** within [Yuanpei College](https://yuanpei.pku.edu.cn/), [Peking University](https://english.pku.edu.cn/). I am very fortunate to be advised by [Prof. Yixin Zhu](https://yzhu.io/). I am also an **Applied Scientist Intern** at **Amazon FAR**. My research interests focus on the intersection of **Robotics** 🤖, **Computer Vision** 👁️ and **Reinforcement Learning** 🎮, where I explore how intelligent systems perceive, learn, and interact. 
+
+Beyond research, I enjoy staying active and competitive on the tennis court 🎾 and hitting the slopes snowboarding 🏂. I am passionate about advancing robot capabilities and their practical applications. I welcome discussions, collaborative projects, or shared interests—feel free to connect!
