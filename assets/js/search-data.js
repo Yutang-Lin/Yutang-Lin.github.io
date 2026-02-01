@@ -104,6 +104,9 @@ ninja.data = [{
           section: "News",},{id: "news-release-of-cola-learning-human-humanoid-coordination-for-collaborative-object-carrying",
           title: 'Release of COLA: Learning Human-Humanoid Coordination for Collaborative Object Carrying.',
           description: "",
+          section: "News",},{id: "news-cola-is-accepted-by-icra-2026",
+          title: '🔥 COLA is accepted by ICRA 2026.',
+          description: "",
           section: "News",},{
         id: 'social-email',
         title: 'email',
