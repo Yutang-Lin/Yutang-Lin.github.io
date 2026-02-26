@@ -67,14 +67,22 @@
       selected={true}
 }
 
-@unpublished{coming3,
-      abbr={Coming Soon},
-      title={Coming Soon}, 
-      author={Yutang Lin* and ???* and ??? and ???† and ???† and ???†},
+@unpublished{lessmimic,
+      abbr={arXiv},
+      title={LessMimic: Long-Horizon Humanoid Interaction with Unified Distance Field Representations},
+      author={Yutang Lin* and Jieming Cui* and Yixuan Li and Baoxiong Jia† and Yixin Zhu† and Siyuan Huang†},
       year={2026},
       month={2},
-
-      preview={question_mark.png},
+      archivePrefix={arXiv},
+      arxiv={2602.21723},
+      abstract={Humanoid robots that autonomously interact with physical environments over extended horizons represent a central goal of embodied intelligence. Existing approaches rely on reference motions or task-specific rewards, tightly coupling policies to particular object geometries and precluding multi-skill generalization within a single framework. A unified interaction representation enabling reference-free inference, geometric generalization, and long-horizon skill composition within one policy remains an open challenge. Here we show that Distance Field (DF) provides such a representation: LessMimic conditions a single whole-body policy on DF-derived geometric cues—surface distances, gradients, and velocity decompositions—removing the need for motion references, with interaction latents encoded via a Variational Autoencoder (VAE) and post-trained using Adversarial Interaction Prior (AIP)-derived Reinforcement Learning (RL). Through DAgger-style distillation that aligns DF latents with egocentric depth features, LessMimic further transfers seamlessly to vision-only deployment without motion capture infrastructure.},
+      primaryClass={cs.RO},
+      url={https://lessmimic.github.io/},
+      website={https://lessmimic.github.io/},
+      pdf={lessmimic.pdf},
+      code={https://github.com/Yutang-Lin/LessMimic},
+      video={https://vimeo.com/1168055451},
+      preview={lessmimic.gif},
 
       selected={true}
 }
