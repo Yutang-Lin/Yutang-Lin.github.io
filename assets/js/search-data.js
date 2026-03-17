@@ -110,6 +110,9 @@ ninja.data = [{
           section: "News",},{id: "news-release-of-lessmimic-long-horizon-humanoid-interaction-with-unified-distance-field-representations-check-out-the-arxiv-paper-and-code",
           title: 'Release of LessMimic: Long-Horizon Humanoid Interaction with Unified Distance Field Representations. Check out...',
           description: "",
+          section: "News",},{id: "news-release-of-omniclone-engineering-a-robust-all-rounder-whole-body-humanoid-teleoperation-system",
+          title: 'Release of OmniClone: Engineering a Robust, All-Rounder Whole-Body Humanoid Teleoperation System.',
+          description: "",
           section: "News",},{
         id: 'social-email',
         title: 'email',
