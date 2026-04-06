@@ -113,8 +113,8 @@ ninja.data = [{
           section: "News",},{id: "news-release-of-omniclone-engineering-a-robust-all-rounder-whole-body-humanoid-teleoperation-system",
           title: 'Release of OmniClone: Engineering a Robust, All-Rounder Whole-Body Humanoid Teleoperation System.',
           description: "",
-          section: "News",},{id: "news-alphachimp-is-accepted-by-the-international-journal-of-computer-vision-ijcv-5-year-impact-factor-15-5-2024",
-          title: '🔥 AlphaChimp is accepted by the International Journal of Computer Vision (IJCV) (5-year...',
+          section: "News",},{id: "news-alphachimp-is-accepted-by-the-ijcv-5-year-impact-factor-15-5-2024",
+          title: '🔥 AlphaChimp is accepted by the IJCV (5-year impact factor 15.5, 2024).',
           description: "",
           section: "News",},{
         id: 'social-email',
