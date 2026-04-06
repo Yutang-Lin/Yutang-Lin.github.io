@@ -147,24 +147,38 @@
   "publications": [
     {
       "name": "AlphaChimp: Tracking and Behavior Recognition of Chimpanzees",
-      "publisher": "CVPR 2025 Workshop",
+      "publisher": "International Journal of Computer Vision (IJCV)",
       "releaseDate": "2024-10-22",
       "url": "https://sites.google.com/view/alphachimp/home",
       "summary": "We propose AlphaChimp, an end-to-end approach that simultaneously detects chimpanzee positions and estimates behavior categories from videos."
     },
     {
       "name": "CLONE: Holistic Closed-Loop Humanoid Whole-Body Teleoperation for Long-Horizon Tasks",
-      "publisher": "CoRL 2025",
+      "publisher": "Conference on Robot Learning (CoRL) 2025",
       "releaseDate": "2025-06-20",
       "url": "https://humanoid-clone.github.io/",
       "summary": "CLONE employs an MoE-based policy with closed-loop error correction for holistic humanoid teleoperation, enabling capabilities previously unattainable with existing systems—such as whole-body coordination and long-horizon task execution. "
     },
     {
       "name": "COLA: Learning Human-Humanoid Coordination for Collaborative Object Carrying",
-      "publisher": "ICRA 2026",
+      "publisher": "International Conference on Robotics and Automation (ICRA) 2026",
       "releaseDate": "2025-10-16",
       "url": "https://yushi-du.github.io/COLA/",
       "summary": "COLA is trained in a closed-loop environment with dynamic object interactions to predict object motion patterns and human intentions implicitly, enabling compliant collaboration to maintain load balance through coordinated trajectory planning. "
+    },
+    {
+      "name": "LessMimic: Long-Horizon Humanoid Interaction with Unified Distance Field Representations",
+      "publisher": "arXiv",
+      "releaseDate": "2026-02-26",
+      "url": "https://lessmimic.github.io/",
+      "summary": "A whole-body humanoid policy conditioned on distance-field geometric cues for reference-free interaction, long-horizon skill composition, and vision-only deployment without motion capture."
+    },
+    {
+      "name": "OmniClone: Engineering a Robust, All-Rounder Whole-Body Humanoid Teleoperation System",
+      "publisher": "arXiv",
+      "releaseDate": "2026-03-01",
+      "url": "https://omniclone.github.io/",
+      "summary": "A whole-body humanoid teleoperation system with robust multi-skill control, the OmniBench diagnostic benchmark, and subject-agnostic retargeting for scalable humanoid control and learning."
     }
   ],
   

@@ -26,3 +26,7 @@
 "ICRA":
   url: https://icra.ieee.org/
   color: "#1f77b4"
+
+"IJCV":
+  url: https://link.springer.com/journal/11263
+  color: "#8bc34a"
