@@ -6,4 +6,4 @@ inline: true
 related_posts: false
 ---
 
-🔥 [**AlphaChimp**](https://sites.google.com/view/alphachimp/home) is **accepted** by the [International Journal of Computer Vision (IJCV)](https://link.springer.com/journal/11263) (5-year impact factor 15.5, 2024).
+🔥 [**AlphaChimp**](https://sites.google.com/view/alphachimp/home) is **accepted** by the [IJCV](https://link.springer.com/journal/11263) (5-year impact factor 15.5, 2024).

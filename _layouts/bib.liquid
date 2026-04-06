@@ -166,14 +166,36 @@
     </div>
 
     <!-- Journal/Book title and date -->
-    {% assign proceedings = 'inproceedings,incollection' | split: ',' %}
+    {% assign proceedings = 'inproceedings,incollection,conference' | split: ',' %}
     {% assign thesis = 'thesis,mastersthesis,phdthesis' | split: ',' %}
     {% if entry.type == 'article' %}
-      {% capture entrytype %}<em>{{ entry.journal }}</em>{% endcapture %}
+      {% if entry.abbr != blank %}
+        {% capture entrytype %}<em>{{ entry.abbr }}</em>{% endcapture %}
+      {% else %}
+        {% capture entrytype %}<em>{{ entry.journal }}</em>{% endcapture %}
+      {% endif %}
     {% elsif proceedings contains entry.type %}
-      {% capture entrytype %}<em>In {{ entry.booktitle }}</em>{% endcapture %}
+      {% if entry.abbr != blank %}
+        {% capture entrytype %}<em>{{ entry.abbr }}</em>{% endcapture %}
+      {% elsif entry.booktitle != blank %}
+        {% capture entrytype %}In <em>{{ entry.booktitle }}</em>{% endcapture %}
+      {% else %}
+        {% capture entrytype %}{% endcapture %}
+      {% endif %}
     {% elsif thesis contains entry.type %}
-      {% capture entrytype %}<em>{{ entry.school }}</em>{% endcapture %}
+      {% if entry.abbr != blank %}
+        {% capture entrytype %}<em>{{ entry.abbr }}</em>{% endcapture %}
+      {% else %}
+        {% capture entrytype %}<em>{{ entry.school }}</em>{% endcapture %}
+      {% endif %}
+    {% elsif entry.arxiv != blank %}
+      {% if entry.abbr != blank %}
+        {% capture entrytype %}<em>{{ entry.abbr }}</em>{% endcapture %}
+      {% else %}
+        {% capture entrytype %}<em>arXiv</em>{% endcapture %}
+      {% endif %}
+    {% elsif entry.abbr != blank %}
+      {% capture entrytype %}<em>{{ entry.abbr }}</em>{% endcapture %}
     {% else %}
       {% capture entrytype %}{% endcapture %}
     {% endif %}
