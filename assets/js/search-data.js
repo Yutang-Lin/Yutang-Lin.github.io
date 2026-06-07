@@ -138,6 +138,13 @@ ninja.data = [{
           window.open("https://orcid.org/0009-0004-4933-1203", "_blank");
         },
       },{
+        id: 'social-semanticscholar',
+        title: 'Semantic Scholar',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://www.semanticscholar.org/author/Yutang-Lin/2327171621", "_blank");
+        },
+      },{
         id: 'social-wechat_qr',
         title: 'Wechat_qr',
         section: 'Socials',
