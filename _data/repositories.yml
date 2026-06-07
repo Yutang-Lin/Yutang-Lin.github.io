@@ -5,8 +5,56 @@ repo_description_lines_max: 2
 
 github_repos:
   - humanoid-clone/CLONE
+  - yixxuan-li/OmniClone
+  - Yutang-Lin/LessMimic
   - Yutang-Lin/Sim2Everything
   - Yutang-Lin/VisionWrapper
   - Yushi-Du/COLA_Code
   - ShirleyMaxx/AlphaChimp
-  
+
+# Fallback metadata, keyed by "owner/repo".
+# Used when the live GitHub API is unreachable, and to override empty
+# upstream descriptions. Live values (stars/forks) refresh client-side.
+repo_fallbacks:
+  "humanoid-clone/CLONE":
+    description: "Holistic closed-loop whole-body humanoid teleoperation for long-horizon control (CoRL 2025)."
+    language: Python
+    stars: 271
+    forks: 16
+  "yixxuan-li/OmniClone":
+    description: "Engineering a robust, all-rounder whole-body humanoid teleoperation system."
+    language: Python
+    stars: 84
+    forks: 1
+  "Yutang-Lin/LessMimic":
+    description: "Official implementation of LessMimic: Long-Horizon Humanoid Interaction with Unified Distance Field Representations."
+    language: Python
+    stars: 49
+    forks: 1
+  "Yutang-Lin/Sim2Everything":
+    description: "Simulator environments for sim2sim plus a wrapped ROS2 environment for Unitree robots, enabling seamless sim2sim and sim2real transfer."
+    language: Python
+    stars: 18
+    forks: 2
+  "Yutang-Lin/VisionWrapper":
+    description: "Wrapping existing Vision Pro tracking Python interfaces."
+    language: Python
+    stars: 5
+    forks: 1
+  "Yushi-Du/COLA_Code":
+    description: "Learning human-humanoid coordination for collaborative object carrying (ICRA 2026)."
+    language: Python
+    stars: 81
+    forks: 0
+  "ShirleyMaxx/AlphaChimp":
+    description: "Tracking and behavior recognition of chimpanzees (IJCV 2024)."
+    language: Python
+    stars: 9
+    forks: 1
+
+github_user_fallbacks:
+  "Yutang-Lin":
+    name: Yutang Lin
+    public_repos: 15
+    followers: 19
+    following: 7

@@ -1,0 +1,207 @@
+/*******************************************************************************
+ * Native GitHub repository & profile cards (modern redesign)
+ ******************************************************************************/
+
+.repo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.repo-user-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+// ---- Repository card --------------------------------------------------------
+
+.repo-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 1.1rem 1.2rem;
+  border-radius: var(--global-radius-md);
+  border: 1px solid var(--global-divider-color);
+  background: var(--global-card-bg-color);
+  box-shadow: var(--global-shadow-sm);
+  text-decoration: none;
+  color: var(--global-text-color);
+  transition:
+    transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--global-shadow-md);
+    border-color: var(--global-accent-2);
+    text-decoration: none;
+    color: var(--global-text-color);
+
+    .repo-card-name {
+      color: var(--global-theme-color);
+    }
+  }
+
+  .repo-card-head {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 0;
+  }
+
+  .repo-card-icon {
+    font-size: 1.15rem;
+    color: var(--global-text-color-light);
+    flex: 0 0 auto;
+  }
+
+  .repo-card-name {
+    font-family: var(--global-font-display);
+    font-weight: 600;
+    font-size: 1.02rem;
+    line-height: 1.2;
+    word-break: break-word;
+    transition: color 0.25s ease;
+  }
+
+  .repo-card-owner {
+    color: var(--global-text-color-light);
+    font-weight: 500;
+  }
+
+  .repo-card-desc {
+    margin: 0;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: var(--global-text-color-light);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 1.2em;
+  }
+
+  .repo-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: auto;
+    padding-top: 0.3rem;
+    font-size: 0.82rem;
+    color: var(--global-text-color-light);
+  }
+
+  .repo-card-lang {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .repo-card-lang-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--global-accent-1);
+    display: inline-block;
+  }
+
+  .repo-card-stat {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+
+    i {
+      font-size: 0.95rem;
+    }
+  }
+
+  &.repo-loading {
+    .repo-card-stat span,
+    .repo-card-desc {
+      opacity: 0.55;
+    }
+  }
+}
+
+// ---- Profile card -----------------------------------------------------------
+
+.repo-user-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.2rem;
+  border-radius: var(--global-radius-md);
+  border: 1px solid var(--global-divider-color);
+  background: var(--global-card-bg-color);
+  box-shadow: var(--global-shadow-sm);
+  text-decoration: none;
+  color: var(--global-text-color);
+  transition:
+    transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--global-shadow-md);
+    border-color: var(--global-accent-2);
+    text-decoration: none;
+    color: var(--global-text-color);
+  }
+
+  .repo-user-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    flex: 0 0 auto;
+    border: 2px solid var(--global-divider-color);
+    object-fit: cover;
+  }
+
+  .repo-user-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    min-width: 0;
+  }
+
+  .repo-user-name {
+    font-family: var(--global-font-display);
+    font-weight: 600;
+    font-size: 1.1rem;
+    line-height: 1.2;
+  }
+
+  .repo-user-login {
+    font-size: 0.85rem;
+    color: var(--global-text-color-light);
+  }
+
+  .repo-user-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: 0.4rem;
+    font-size: 0.82rem;
+    color: var(--global-text-color-light);
+
+    strong {
+      color: var(--global-text-color);
+      font-weight: 600;
+    }
+  }
+
+  .repo-user-ghicon {
+    position: absolute;
+    top: 1rem;
+    right: 1.1rem;
+    font-size: 1.2rem;
+    color: var(--global-text-color-light);
+    opacity: 0.6;
+  }
+}

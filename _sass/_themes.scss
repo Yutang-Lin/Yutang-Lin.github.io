@@ -6,20 +6,21 @@
 
 :root {
   color-scheme: light;
-  --global-bg-color: #{$white-color};
+  --global-bg-color: #{$cream-bg};
   --global-code-bg-color: #{$code-bg-color-light};
-  --global-text-color: #{$black-color};
-  --global-text-color-light: #{$grey-color};
-  --global-theme-color: #{$purple-color};
-  --global-hover-color: #{$purple-color};
+  --global-text-color: #{$ink-color};
+  --global-text-color-light: #{$ink-muted};
+  --global-theme-color: #{$amber-color-deep};
+  --global-hover-color: #{$coral-color-deep};
   --global-hover-text-color: #{$white-color};
-  --global-footer-bg-color: #{$grey-color-dark};
-  --global-footer-text-color: #{$grey-color-light};
-  --global-footer-link-color: #{$white-color};
-  --global-distill-app-color: #{$grey-color};
-  --global-divider-color: rgba(0, 0, 0, 0.1);
-  --global-card-bg-color: #{$white-color};
-  --global-highlight-color: #{$red-color-dark};
+  --global-footer-bg-color: #{$ink-color};
+  --global-footer-text-color: #{rgba($cream-bg, 0.7)};
+  --global-footer-link-color: #{$amber-color};
+  --global-distill-app-color: #{$ink-muted};
+  --global-divider-color: #{$warm-border};
+  --global-card-bg-color: #{$cream-surface};
+  --global-surface-alt-color: #{$cream-surface-alt};
+  --global-highlight-color: #{$coral-color-deep};
   --global-back-to-top-bg-color: rgba(
     #{color.channel($black-color, "red", $space: rgb)},
     #{color.channel($black-color, "green", $space: rgb)},
@@ -28,7 +29,24 @@
   );
   --global-back-to-top-text-color: #{$white-color};
   --global-newsletter-bg-color: #{$white-color};
-  --global-newsletter-text-color: #{$black-color};
+  --global-newsletter-text-color: #{$ink-color};
+
+  // Modern design tokens
+  --global-accent-1: #{$amber-color};
+  --global-accent-2: #{$coral-color};
+  --global-accent-3: #{$terracotta-color};
+  --global-accent-gradient: linear-gradient(120deg, #{$amber-color} 0%, #{$coral-color} 55%, #{$terracotta-color} 100%);
+  --global-accent-soft: #{rgba($amber-color, 0.12)};
+  --global-glass-bg: #{rgba($cream-surface, 0.72)};
+  --global-shadow-sm: 0 1px 2px rgba(90, 50, 25, 0.07), 0 2px 8px rgba(90, 50, 25, 0.06);
+  --global-shadow-md: 0 4px 14px rgba(90, 50, 25, 0.09), 0 10px 30px rgba(90, 50, 25, 0.08);
+  --global-shadow-lg: 0 18px 50px rgba(90, 50, 25, 0.16);
+  --global-radius-sm: 8px;
+  --global-radius-md: 14px;
+  --global-radius-lg: 24px;
+  --global-font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --global-font-display: "Fraunces", "Roboto Slab", Georgia, serif;
+  --global-font-mono: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
 
   --global-tip-block: #42b983;
   --global-tip-block-bg: #e2f5ec;
@@ -78,19 +96,21 @@
 
 html[data-theme="dark"] {
   color-scheme: dark;
-  --global-bg-color: #{$grey-color-dark};
+  --global-bg-color: #{$night-bg};
   --global-code-bg-color: #{$code-bg-color-dark};
-  --global-text-color: #{$grey-color-light};
-  --global-text-color-light: #{$grey-color};
-  --global-theme-color: #{$cyan-color};
-  --global-hover-color: #{$cyan-color};
-  --global-hover-text-color: #{$white-color};
-  --global-footer-bg-color: #{$grey-color-light};
-  --global-footer-text-color: #{$grey-color-dark};
-  --global-footer-link-color: #{$black-color};
-  --global-distill-app-color: #{$grey-color-light};
-  --global-divider-color: #424246;
-  --global-card-bg-color: #{$grey-900};
+  --global-text-color: #{$night-text};
+  --global-text-color-light: #{$night-muted};
+  --global-theme-color: #{$amber-color};
+  --global-hover-color: #{$coral-color};
+  --global-hover-text-color: #{$night-bg};
+  --global-footer-bg-color: #{$night-surface};
+  --global-footer-text-color: #{rgba($night-text, 0.7)};
+  --global-footer-link-color: #{$amber-color};
+  --global-distill-app-color: #{$night-muted};
+  --global-divider-color: #{$night-border};
+  --global-card-bg-color: #{$night-surface};
+  --global-surface-alt-color: #{$night-surface-alt};
+  --global-highlight-color: #{$coral-color};
   --global-back-to-top-bg-color: rgba(
     #{color.channel($white-color, "red", $space: rgb)},
     #{color.channel($white-color, "green", $space: rgb)},
@@ -98,8 +118,19 @@ html[data-theme="dark"] {
     0.5
   );
   --global-back-to-top-text-color: #{$black-color};
-  --global-newsletter-bg-color: #{$grey-color-light};
-  --global-newsletter-text-color: #{$grey-color-dark};
+  --global-newsletter-bg-color: #{$night-surface};
+  --global-newsletter-text-color: #{$night-text};
+
+  // Modern design tokens
+  --global-accent-1: #{$amber-color};
+  --global-accent-2: #{$coral-color};
+  --global-accent-3: #{$terracotta-color};
+  --global-accent-gradient: linear-gradient(120deg, #{$amber-color} 0%, #{$coral-color} 55%, #{$terracotta-color} 100%);
+  --global-accent-soft: #{rgba($amber-color, 0.16)};
+  --global-glass-bg: #{rgba($night-surface, 0.66)};
+  --global-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.28);
+  --global-shadow-md: 0 4px 14px rgba(0, 0, 0, 0.4), 0 10px 30px rgba(0, 0, 0, 0.32);
+  --global-shadow-lg: 0 18px 50px rgba(0, 0, 0, 0.5);
 
   --global-tip-block: #42b983;
   --global-tip-block-bg: #e2f5ec;

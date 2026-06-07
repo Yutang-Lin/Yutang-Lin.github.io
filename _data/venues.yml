@@ -9,7 +9,7 @@
   color: "#009f36"
 
 "Coming Soon":
-  color: "#808080"
+  color: "#9aa0a6"
 
 "arXiv":
   url: https://arxiv.org/
@@ -17,16 +17,20 @@
 
 "CoRL":
   url: https://www.corl.org/
-  color: "#ffa500"
+  color: "#f59e0b"
 
 "CVPR Workshop":
   url: https://cvpr.thecvf.com/
-  color: "#00369f"
+  color: "#1a73e8"
 
 "ICRA":
   url: https://icra.ieee.org/
-  color: "#1f77b4"
+  color: "#2563eb"
 
 "IJCV":
   url: https://link.springer.com/journal/11263
-  color: "#8bc34a"
+  color: "#16a34a"
+
+"NeurIPS-W":
+  url: https://openreview.net/forum?id=AC1XQjy8Sa
+  color: "#1e3a8a"

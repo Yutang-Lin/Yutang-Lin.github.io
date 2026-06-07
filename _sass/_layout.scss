@@ -6,6 +6,13 @@ body {
   padding-bottom: 70px;
   color: var(--global-text-color);
   background-color: var(--global-bg-color);
+  font-family: var(--global-font-sans);
+  font-size: 1.02rem;
+  line-height: 1.7;
+  letter-spacing: -0.003em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 
   h1,
   h2,
@@ -14,6 +21,49 @@ body {
   h5,
   h6 {
     scroll-margin-top: 66px;
+  }
+}
+
+// Modern display headings
+h1,
+h2,
+h3,
+.post-title,
+.navbar-brand.title {
+  font-family: var(--global-font-display);
+  font-optical-sizing: auto;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+h2,
+h3 {
+  font-weight: 600;
+}
+
+// Soft warm text selection
+::selection {
+  background: var(--global-accent-soft);
+  color: var(--global-text-color);
+}
+
+// Animated underline links in body content
+.post > article a:not(.btn):not(.navbar-brand):not(.no-underline-anim),
+.clearfix a:not(.btn):not(.no-underline-anim) {
+  background-image: linear-gradient(var(--global-accent-2), var(--global-accent-2));
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1.5px;
+  transition: background-size 0.3s ease;
+  text-decoration: none;
+
+  &:hover {
+    background-size: 100% 1.5px;
+    text-decoration: none;
   }
 }
 

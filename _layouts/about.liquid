@@ -2,64 +2,139 @@
 layout: default
 ---
 <div class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      {% if site.title == 'blank' %}
-        <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}
-        {{ site.last_name }}
-      {% else %}
-        {{ site.title }}
-      {% endif %}
-    </h1>
-    <p class="desc">{{ page.subtitle }}</p>
-  </header>
+  <!-- Custom hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="hero-eyebrow-dot" aria-hidden="true"></span>
+        <span class="hero-eyebrow-text">{{ page.subtitle | strip_html | strip }}</span>
+      </div>
 
-  <article>
+      <h1 class="hero-title">
+        {% if site.title == 'blank' %}
+          {{ site.first_name }} {{ site.middle_name }}<span class="hero-accent">{{ site.last_name }}</span>
+        {% else %}
+          {{ site.title }}
+        {% endif %}
+      </h1>
+
+      <div class="hero-subtitle">{{ content }}</div>
+
+      <ul class="hero-tags">
+        <li>🤖 Robotics</li>
+        <li>👁️ Computer Vision</li>
+        <li>🎮 Reinforcement Learning</li>
+      </ul>
+
+      <div class="hero-actions">
+        <a class="hero-btn primary no-underline-anim" href="{{ '/publications/' | relative_url }}">
+          View publications <i class="ti ti-arrow-right"></i>
+        </a>
+        <a class="hero-btn ghost no-underline-anim" href="{{ '/cv/' | relative_url }}">
+          Curriculum Vitae
+        </a>
+      </div>
+    </div>
+
     {% if page.profile %}
-      <div class="profile float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}">
+      <div class="hero-portrait">
         {% if page.profile.image %}
           {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
           {% if page.profile.image_circular %}
-            {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
+            {% assign profile_image_class = 'img-fluid' %}
           {% else %}
-            {% assign profile_image_class = 'img-fluid z-depth-1
-      rounded' %}
+            {% assign profile_image_class = 'img-fluid' %}
           {% endif %}
-          {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px)
-      30vw, 95vw"{% endcapture %}
-          {%
-            include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
-            cache_bust=true
-          %}
+          {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px) 30vw, 95vw"{% endcapture %}
+          <div class="portrait-frame">
+            {%
+              include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
+              cache_bust=true
+            %}
+          </div>
         {% endif %}
         {% if page.profile.more_info %}
-          <div class="more-info">{{ page.profile.more_info }}</div>
+          <div class="portrait-info">{{ page.profile.more_info }}</div>
         {% endif %}
       </div>
     {% endif %}
+  </section>
 
-    <div class="clearfix">{{ content }}</div>
+  <!-- Live research stats (Semantic Scholar) -->
+  {% assign ss_id = site.data.socials.semanticscholar_id | split: '/' | last %}
+  {% if ss_id %}
+    <section
+      class="research-stats reveal-on-scroll"
+      data-semantic-scholar-id="{{ ss_id }}"
+      aria-label="Research statistics"
+    >
+      <a
+        class="stat"
+        href="https://www.semanticscholar.org/author/{{ site.data.socials.semanticscholar_id }}"
+        target="_blank"
+        rel="noopener"
+      >
+        <span class="stat-value" data-stat="citationCount" data-count="0">—</span>
+        <span class="stat-label">Citations</span>
+      </a>
+      <a
+        class="stat"
+        href="https://www.semanticscholar.org/author/{{ site.data.socials.semanticscholar_id }}"
+        target="_blank"
+        rel="noopener"
+      >
+        <span class="stat-value" data-stat="hIndex" data-count="0">—</span>
+        <span class="stat-label">h-index</span>
+      </a>
+      <a
+        class="stat"
+        href="{{ '/publications/' | relative_url }}"
+      >
+        <span class="stat-value" data-stat="paperCount" data-count="0">—</span>
+        <span class="stat-label">Publications</span>
+      </a>
+      <span class="stat-source">
+        <i class="ai ai-semantic-scholar"></i> live via Semantic Scholar
+      </span>
+    </section>
+  {% endif %}
 
-    <!-- News -->
-    {% if page.announcements and page.announcements.enabled %}
-      <h2>
-        <a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a>
+  <article>
+    <!-- Milestone timeline -->
+    {% if site.news != blank %}
+      <h2 class="home-section-title">
+        <a href="{{ '/news/' | relative_url }}">timeline</a>
       </h2>
-      {% include news.liquid limit=true %}
+      <ol class="timeline">
+        {% assign timeline_news = site.news | sort: 'date' | reverse %}
+        {% for item in timeline_news limit: 7 %}
+          <li class="timeline-item reveal-on-scroll">
+            <span class="timeline-marker" aria-hidden="true"></span>
+            <time class="timeline-date">{{ item.date | date: '%b %Y' }}</time>
+            <div class="timeline-body">
+              {% if item.inline %}
+                {{ item.content | remove: '<p>' | remove: '</p>' | emojify }}
+              {% else %}
+                <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+              {% endif %}
+            </div>
+          </li>
+        {% endfor %}
+      </ol>
     {% endif %}
 
     <!-- Latest posts -->
     {% if page.latest_posts and page.latest_posts.enabled %}
-      <h2>
-        <a href="{{ '/blog/' | relative_url }}" style="color: inherit">latest posts</a>
+      <h2 class="home-section-title">
+        <a href="{{ '/blog/' | relative_url }}">latest posts</a>
       </h2>
       {% include latest_posts.liquid %}
     {% endif %}
 
     <!-- Selected papers -->
     {% if page.selected_papers %}
-      <h2>
-        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">selected publications</a>
+      <h2 class="home-section-title">
+        <a href="{{ '/publications/' | relative_url }}">selected publications</a>
       </h2>
       {% include selected_papers.liquid %}
     {% endif %}

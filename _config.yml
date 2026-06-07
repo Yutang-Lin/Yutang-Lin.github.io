@@ -290,7 +290,7 @@ scholar:
   sort_by: year, month
   order: descending, descending
   type_order: [unpublished, article, inbook, conference, incollections, inproceedings, proceedings, book, misc, techreport]
-  type_names: {unpublished: Pre-Prints}
+  type_names: {unpublished: Pre-Prints, inproceedings: Conference Articles, conference: Conference Articles, article: Journal Articles}
 
 # Display different badges withs stats for your publications
 # Customize badge behavior in _layouts/bib.liquid
@@ -445,7 +445,7 @@ third_party_libraries:
     version: "5.5.0"
   google_fonts:
     url:
-      fonts: "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&display=swap"
+      fonts: "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@100;300;400;500;700&family=Material+Icons&display=swap"
   highlightjs:
     integrity:
       css:

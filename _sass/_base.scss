@@ -168,6 +168,20 @@ ul.task-list input[type="checkbox"] {
 
 .card {
   background-color: var(--global-card-bg-color);
+  border: 1px solid var(--global-divider-color);
+  border-radius: var(--global-radius-md);
+  overflow: hidden;
+  box-shadow: var(--global-shadow-sm);
+  transition:
+    transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--global-shadow-md);
+    border-color: var(--global-accent-2);
+  }
 
   .card-img {
     width: 100%;
@@ -176,6 +190,8 @@ ul.task-list input[type="checkbox"] {
 
   .card-title {
     color: var(--global-text-color);
+    font-family: var(--global-font-display);
+    font-weight: 600;
   }
 
   .card-body {
@@ -246,8 +262,16 @@ ul.task-list input[type="checkbox"] {
 .navbar {
   box-shadow: none;
   border-bottom: 1px solid var(--global-divider-color);
-  background-color: var(--global-bg-color);
-  opacity: 0.95;
+  background-color: var(--global-glass-bg);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  transition:
+    box-shadow 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.navbar.scrolled {
+  box-shadow: var(--global-shadow-sm);
 }
 
 .navbar .dropdown-menu {
@@ -288,17 +312,41 @@ ul.task-list input[type="checkbox"] {
   }
 
   .navbar-nav .nav-item .nav-link {
+    position: relative;
     color: var(--global-text-color);
+    font-weight: 500;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0.5rem;
+      right: 0.5rem;
+      bottom: 0.2rem;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--global-accent-gradient);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.28s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
 
     &:hover {
       color: var(--global-hover-color);
+
+      &::after {
+        transform: scaleX(1);
+      }
     }
   }
 
   .navbar-nav .nav-item.active > .nav-link {
     background-color: inherit;
-    font-weight: bolder;
+    font-weight: 700;
     color: var(--global-theme-color);
+
+    &::after {
+      transform: scaleX(1);
+    }
 
     &:hover {
       color: var(--global-hover-color);
@@ -399,11 +447,15 @@ ul.task-list input[type="checkbox"] {
 
 .social {
   text-align: center;
+  margin-top: 1.5rem;
 
   .contact-icons {
     font-size: 4rem;
 
     a {
+      display: inline-block;
+      transition: transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1);
+
       img {
         width: 3.2rem;
         height: 3.2rem;
@@ -428,6 +480,7 @@ ul.task-list input[type="checkbox"] {
 
       &:hover {
         text-decoration: none;
+        transform: translateY(-4px);
 
         i::before {
           color: var(--global-theme-color);
@@ -553,9 +606,16 @@ footer.sticky-bottom {
   padding-bottom: 3rem;
 
   h1 {
-    color: var(--global-theme-color);
-    font-size: 5rem;
-    // font-weight: bold;
+    font-family: var(--global-font-display);
+    font-size: clamp(2.8rem, 8vw, 5rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    background: var(--global-accent-gradient);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-pan 6s ease infinite;
   }
 
   h2 {
@@ -708,11 +768,18 @@ footer.sticky-bottom {
   margin-top: 2rem;
 
   h1 {
-    color: var(--global-theme-color);
-    font-size: 2rem;
+    font-family: var(--global-font-display);
+    font-weight: 600;
+    font-size: clamp(2rem, 5vw, 2.8rem);
     text-align: center;
     margin-top: 1em;
     margin-bottom: 1em;
+    background: var(--global-accent-gradient);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-pan 6s ease infinite;
   }
 
   h2 {
@@ -737,7 +804,64 @@ footer.sticky-bottom {
     margin-top: 0;
 
     li {
+      --venue-color: var(--global-accent-2);
+      position: relative;
       margin-bottom: 1rem;
+      padding: 1.1rem 1.1rem 1.1rem 1.4rem;
+      border-radius: var(--global-radius-md);
+      border: 1px solid var(--global-divider-color);
+      background: var(--global-card-bg-color);
+      box-shadow: var(--global-shadow-sm);
+      overflow: hidden;
+      transition:
+        transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1),
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+
+      // venue-colored gradient accent rail
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: linear-gradient(
+          180deg,
+          var(--venue-color) 0%,
+          color-mix(in srgb, var(--venue-color) 55%, transparent) 100%
+        );
+        transition: width 0.3s ease;
+      }
+
+      // soft themed wash that fades in on hover
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          105deg,
+          color-mix(in srgb, var(--venue-color) 12%, transparent) 0%,
+          transparent 45%
+        );
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+      }
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--global-shadow-md);
+        border-color: color-mix(in srgb, var(--venue-color) 60%, var(--global-divider-color));
+
+        &::before {
+          width: 6px;
+        }
+
+        &::after {
+          opacity: 1;
+        }
+      }
 
       .preview {
       }
@@ -747,9 +871,27 @@ footer.sticky-bottom {
 
         abbr {
           display: inline-block;
-          background-color: var(--global-theme-color);
+          border-radius: 999px;
+          padding: 0.15rem 0.75rem;
+          font-size: 0.78rem;
+          font-weight: 600;
+          letter-spacing: 0.02em;
           margin-bottom: 0.5rem;
-          color: var(--global-card-bg-color) !important;
+          color: #fff !important;
+          box-shadow: var(--global-shadow-sm);
+          transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
+
+          // gradient only when no per-venue color is set inline
+          &:not([style]) {
+            background: var(--global-accent-gradient);
+          }
+
+          &:hover {
+            transform: translateY(-1px) scale(1.04);
+            box-shadow: var(--global-shadow-md);
+          }
 
           a {
             color: white;
@@ -800,16 +942,25 @@ footer.sticky-bottom {
       .links {
         a.btn {
           color: var(--global-text-color);
-          border: 1px solid var(--global-text-color);
+          border: 1px solid var(--global-divider-color);
+          border-radius: 999px;
           padding-left: 1rem;
           padding-right: 1rem;
           padding-top: 0.25rem;
           padding-bottom: 0.25rem;
           margin-left: 0;
+          font-size: 0.85rem;
+          transition:
+            color 0.25s ease,
+            border-color 0.25s ease,
+            background-color 0.25s ease,
+            transform 0.25s ease;
 
           &:hover {
-            color: var(--global-theme-color);
-            border-color: var(--global-theme-color);
+            color: #fff;
+            background: var(--global-accent-gradient);
+            border-color: transparent;
+            transform: translateY(-1px);
           }
         }
         a.award.btn {
@@ -1352,6 +1503,60 @@ ninja-keys::part(ninja-input-wrapper) {
 ::highlight(search) {
   background-color: var(--global-theme-color);
   color: var(--global-text-color);
+}
+
+// News & latest posts (modern redesign)
+.news {
+  .table-responsive {
+    scrollbar-width: thin;
+    scrollbar-color: var(--global-divider-color) transparent;
+  }
+
+  table {
+    margin-bottom: 0;
+
+    td,
+    th {
+      vertical-align: top;
+      padding-top: 0.85rem;
+      padding-bottom: 0.85rem;
+      border: none;
+    }
+
+    tr {
+      border-bottom: 1px solid var(--global-divider-color);
+      transition: background-color 0.2s ease;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover {
+        background-color: var(--global-surface-alt-color);
+      }
+    }
+
+    th[scope="row"] {
+      font-family: var(--global-font-mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--global-text-color-light);
+      padding-top: 1rem;
+      white-space: nowrap;
+    }
+  }
+
+  .news-title {
+    color: var(--global-text-color);
+    text-decoration: none;
+    font-weight: 500;
+
+    &:hover {
+      color: var(--global-theme-color);
+    }
+  }
 }
 
 figure.cover {

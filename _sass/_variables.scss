@@ -32,6 +32,33 @@ $grey-900: #212529;
 $white-color: #ffffff !default;
 $black-color: #000000 !default;
 
+// -----------------------------------------------------------------------------
+// Terracotta/clay palette (modern redesign)
+// -----------------------------------------------------------------------------
+
+// Brand accents
+$amber-color: #d4572a; // terracotta (primary accent)
+$amber-color-deep: #c2410c; // burnt rust for hover/dark
+$coral-color: #e07856; // warm clay
+$coral-color-deep: #cf5f3c;
+$terracotta-color: #e89b6c; // soft clay-peach (gradient tail)
+
+// Light theme neutrals (warm sand off-whites & inks)
+$cream-bg: #faf6f1; // page background
+$cream-surface: #ffffff; // card background
+$cream-surface-alt: #f4ece2; // subtle warm sand surface
+$ink-color: #2b211b; // primary text (warm espresso near-black)
+$ink-muted: #8a7868; // muted warm grey text
+$warm-border: rgba(120, 70, 40, 0.13);
+
+// Dark theme neutrals (deep espresso browns)
+$night-bg: #17110d; // page background
+$night-surface: #221a14; // card background
+$night-surface-alt: #2d221a; // subtle surface
+$night-text: #ece0d4; // primary text
+$night-muted: #ab9684; // muted text
+$night-border: rgba(255, 200, 150, 0.13);
+
 // Theme colors
 
 $code-bg-color-light: rgba($purple-color, 0.05);

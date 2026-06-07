@@ -179,6 +179,13 @@
       "releaseDate": "2026-03-01",
       "url": "https://omniclone.github.io/",
       "summary": "A whole-body humanoid teleoperation system with robust multi-skill control, the OmniBench diagnostic benchmark, and subject-agnostic retargeting for scalable humanoid control and learning."
+    },
+    {
+      "name": "GapONet: Nonlinear Operator Learning for Bridging the Humanoid Sim-to-Real Gap",
+      "publisher": "NeurIPS 2025 Workshop on Embodiment-Aware World Models (EWM)",
+      "releaseDate": "2025-12-01",
+      "url": "https://openreview.net/forum?id=AC1XQjy8Sa",
+      "summary": "A payload-conditioned nonlinear operator that maps simulation context functions to residual actions for hardware, keeping large sim-to-real gaps below 0.09% when tracking unseen motions."
     }
   ],
   

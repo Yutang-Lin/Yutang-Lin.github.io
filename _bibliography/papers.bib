@@ -26,7 +26,7 @@
       selected={true}
 }
 
-@conference{clone,
+@inproceedings{clone,
       abbr={CoRL},
       title={CLONE: Holistic Closed-Loop Whole-Body Teleoperation for Long-Horizon Humanoid Control}, 
       author={Yixuan Li* and Yutang Lin* and Jieming Cui and Tengyu Liu and Wei Liang† and Yixin Zhu† and Siyuan Huang†},
@@ -47,7 +47,7 @@
       selected={true}
 }
 
-@conference{cola,
+@inproceedings{cola,
       abbr={ICRA},
       title={COLA: Learning Human-Humanoid Coordination for Collaborative Object Carrying}, 
       author={Yushi Du* and Yixuan Li* and Baoxiong Jia* and Yutang Lin and Pei Zhou and Wei Liang† and Yanchao Yang† and Siyuan Huang†},
@@ -108,16 +108,21 @@
       selected={true}
 }
 
-@unpublished{coming1,
-      abbr={Coming Soon},
-      title={Coming Soon}, 
-      author={???* and ???* and Yutang Lin* and ??? and ??? and ??? and ???† and ???† and ???†},
-      year={2026},
-      month={2},
+@inproceedings{gaponet,
+      abbr={NeurIPS-W},
+      title={GapONet: Nonlinear Operator Learning for Bridging the Humanoid Sim-to-Real Gap},
+      author={Jieming Cui* and Zhenghao Qi* and Yutang Lin* and Tengyu Liu and Yuntian Hu and Bin He and Ruihua Zhang† and Siyuan Huang† and Yixin Zhu†},
+      booktitle={NeurIPS 2025 Workshop on Embodiment-Aware World Models (EWM)},
+      year={2025},
+      month={12},
 
-      preview={question_mark.png},
+      abstract={Sim-to-real transfer remains a central challenge for humanoid robots, where dynamics mismatches between simulation and hardware degrade control performance. We propose GapONet, a payload-conditioned nonlinear operator that maps simulation context functions to residual actions for hardware. We compile TWINS, a dataset of over 11,298 motion sequences, perform payload-aware system identification, and train GapONet to predict compensatory actions in real time. Our method keeps large gaps below 0.09% when tracking unseen motions, substantially outperforming competing approaches.},
+      primaryClass={cs.RO},
+      url={https://openreview.net/forum?id=AC1XQjy8Sa},
+      html={https://openreview.net/forum?id=AC1XQjy8Sa},
+      preview={gapo.png},
 
-      selected={false}
+      selected={true}
 }
 
 
