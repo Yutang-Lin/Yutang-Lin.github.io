@@ -14,23 +14,7 @@
   padding: 2.5rem 0 2rem;
   margin-bottom: 1rem;
 
-  // animated gradient mesh / aurora behind the hero
-  &::before {
-    content: "";
-    position: absolute;
-    inset: -55% -35%;
-    z-index: 0;
-    pointer-events: none;
-    background:
-      radial-gradient(40% 52% at 16% 26%, color-mix(in srgb, var(--global-accent-1) 60%, transparent) 0%, transparent 68%),
-      radial-gradient(36% 48% at 84% 16%, color-mix(in srgb, var(--global-accent-2) 55%, transparent) 0%, transparent 68%),
-      radial-gradient(44% 56% at 66% 82%, color-mix(in srgb, var(--global-accent-3) 48%, transparent) 0%, transparent 70%);
-    opacity: 0.7;
-    filter: blur(40px);
-    background-size: 180% 180%;
-    background-repeat: no-repeat;
-    animation: mesh-drift 22s ease-in-out infinite;
-  }
+  // gradient mesh removed for a cleaner, uncolored hero background
 
   // keep hero content above the mesh
   .hero-content,
@@ -247,47 +231,21 @@
     overflow: hidden;
     box-shadow: var(--global-shadow-lg);
     border: 1px solid var(--global-divider-color);
-    transform-style: preserve-3d;
-    transition: transform 0.25s ease-out;
-    will-change: transform;
+    line-height: 0;
+
+    figure {
+      margin: 0;
+    }
+
+    picture {
+      display: block;
+    }
 
     img {
       display: block;
       width: 100%;
       height: auto;
-      transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
     }
-
-    &:hover img {
-      transform: scale(1.04);
-    }
-
-    // glare sweep on hover
-    &::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.28) 50%, transparent 70%);
-      transform: translateX(-120%);
-      transition: transform 0.7s ease;
-      pointer-events: none;
-    }
-
-    &:hover::after {
-      transform: translateX(120%);
-    }
-  }
-
-  // decorative gradient ring
-  &::after {
-    content: "";
-    position: absolute;
-    inset: -14px;
-    border-radius: calc(var(--global-radius-lg) + 14px);
-    background: var(--global-accent-gradient);
-    opacity: 0.18;
-    z-index: -1;
-    filter: blur(14px);
   }
 
   .portrait-info {
@@ -602,41 +560,6 @@ ol.bibliography > li.has-spotlight {
 .reveal-in {
   opacity: 1;
   transform: none;
-}
-
-// ---- Floating gradient blobs in the hero ------------------------------------
-
-.hero::after {
-  content: "";
-  position: absolute;
-  width: 320px;
-  height: 320px;
-  right: -4%;
-  top: -12%;
-  background: var(--global-accent-gradient);
-  border-radius: 45% 55% 62% 38% / 48% 42% 58% 52%;
-  opacity: 0.1;
-  filter: blur(28px);
-  z-index: -1;
-  pointer-events: none;
-  animation: blob-float 14s ease-in-out infinite;
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-}
-
-@keyframes blob-float {
-  0%,
-  100% {
-    transform: translate(0, 0) rotate(0deg) scale(1);
-  }
-  33% {
-    transform: translate(-24px, 26px) rotate(40deg) scale(1.08);
-  }
-  66% {
-    transform: translate(18px, -16px) rotate(-30deg) scale(0.96);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

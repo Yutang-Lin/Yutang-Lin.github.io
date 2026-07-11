@@ -124,52 +124,98 @@ $(document).ready(function () {
       requestAnimationFrame(step);
     };
     if (id) {
-      fetch(
-        "https://api.semanticscholar.org/graph/v1/author/" +
-          encodeURIComponent(id) +
-          "?fields=paperCount,citationCount,hIndex"
-      )
-        .then(function (r) {
-          if (!r.ok) throw new Error("status " + r.status);
-          return r.json();
-        })
-        .then(function (data) {
-          valueEls.forEach(function (el) {
-            const key = el.getAttribute("data-stat");
-            const v = typeof data[key] === "number" ? data[key] : 0;
-            el.setAttribute("data-count", v);
-          });
-          // animate now if already visible, else on reveal
-          const trigger = function () {
-            valueEls.forEach(function (el) {
-              animateCount(el, parseInt(el.getAttribute("data-count"), 10) || 0);
-            });
-          };
-          if ("IntersectionObserver" in window && !prefersReduced) {
-            const so = new IntersectionObserver(
-              function (entries, obs) {
-                entries.forEach(function (e) {
-                  if (e.isIntersecting) {
-                    trigger();
-                    obs.disconnect();
-                  }
-                });
-              },
-              { threshold: 0.3 }
-            );
-            so.observe(statsEl);
-          } else {
-            trigger();
-          }
-        })
-        .catch(function () {
-          statsEl.classList.add("stats-error");
-          const src = statsEl.querySelector(".stat-source");
-          if (src) src.textContent = "stats unavailable";
-          valueEls.forEach(function (el) {
-            el.textContent = "—";
-          });
+      const cacheKey = "ss-stats:" + id;
+      const cacheTTL = 6 * 60 * 60 * 1000; // 6h
+      const readCache = function () {
+        try {
+          const raw = localStorage.getItem(cacheKey);
+          if (!raw) return null;
+          const obj = JSON.parse(raw);
+          if (!obj || typeof obj.ts !== "number" || !obj.data) return null;
+          return obj;
+        } catch (e) {
+          return null;
+        }
+      };
+      const writeCache = function (data) {
+        try {
+          localStorage.setItem(cacheKey, JSON.stringify({ ts: Date.now(), data: data }));
+        } catch (e) {
+          /* quota — ignore */
+        }
+      };
+      const applyStats = function (data) {
+        // The author-level citationCount is often stale; prefer the sum of
+        // per-paper citationCount when it exceeds the aggregate.
+        if (Array.isArray(data.papers)) {
+          const summed = data.papers.reduce(function (acc, p) {
+            return acc + (typeof p.citationCount === "number" ? p.citationCount : 0);
+          }, 0);
+          if (summed > (data.citationCount || 0)) data.citationCount = summed;
+        }
+        valueEls.forEach(function (el) {
+          const key = el.getAttribute("data-stat");
+          const v = typeof data[key] === "number" ? data[key] : 0;
+          el.setAttribute("data-count", v);
         });
+        const trigger = function () {
+          valueEls.forEach(function (el) {
+            animateCount(el, parseInt(el.getAttribute("data-count"), 10) || 0);
+          });
+        };
+        if ("IntersectionObserver" in window && !prefersReduced) {
+          const so = new IntersectionObserver(
+            function (entries, obs) {
+              entries.forEach(function (e) {
+                if (e.isIntersecting) {
+                  trigger();
+                  obs.disconnect();
+                }
+              });
+            },
+            { threshold: 0.3 }
+          );
+          so.observe(statsEl);
+        } else {
+          trigger();
+        }
+      };
+
+      const cached = readCache();
+      const cacheFresh = cached && Date.now() - cached.ts < cacheTTL;
+      // If we have a fresh cache, render from it and skip the network to
+      // avoid Semantic Scholar's aggressive anonymous rate limits.
+      if (cacheFresh) {
+        applyStats(cached.data);
+      } else {
+        fetch(
+          "https://api.semanticscholar.org/graph/v1/author/" +
+            encodeURIComponent(id) +
+            "?fields=paperCount,citationCount,hIndex,papers.citationCount"
+        )
+          .then(function (r) {
+            if (!r.ok) throw new Error("status " + r.status);
+            return r.json();
+          })
+          .then(function (data) {
+            writeCache(data);
+            applyStats(data);
+          })
+          .catch(function () {
+            // On error (usually a 429 rate-limit) fall back to any stale cache
+            // rather than showing "stats unavailable".
+            if (cached) {
+              applyStats(cached.data);
+              return;
+            }
+            statsEl.classList.add("stats-error");
+            const src = statsEl.querySelector(".stat-source");
+            if (src) src.textContent = "stats unavailable";
+            valueEls.forEach(function (el) {
+              el.textContent = "—";
+            });
+          });
+      }
     }
   }
 
@@ -194,9 +240,68 @@ $(document).ready(function () {
     return n >= 1000 ? (n / 1000).toFixed(1).replace(/\.0$/, "") + "k" : n.toLocaleString();
   };
 
-  document.querySelectorAll(".repo-card[data-repo]").forEach(function (card) {
+  // aggregate stars/forks across all repo cards on the page
+  const repoStatsEl = document.querySelector(".repo-stats");
+  const repoCards = document.querySelectorAll(".repo-card[data-repo]");
+  const readInt = function (txt) {
+    if (!txt) return 0;
+    const t = txt.trim();
+    if (!t || t === "–" || t === "-" || t === "—") return 0;
+    if (/k$/i.test(t)) return Math.round(parseFloat(t) * 1000) || 0;
+    const n = parseInt(t.replace(/[^0-9]/g, ""), 10);
+    return Number.isFinite(n) ? n : 0;
+  };
+  const repoTotals = { stars: 0, forks: 0 };
+  const repoAnimated = { stars: false, forks: false };
+  const animateStat = function (el, target) {
+    if (!el) return;
+    el.setAttribute("data-count", target);
+    if (prefersReduced || target <= 0) {
+      el.textContent = fmt(target);
+      return;
+    }
+    const duration = 1100;
+    const start = performance.now();
+    const step = function (now) {
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmt(Math.round(target * eased));
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+  const updateRepoStat = function (key) {
+    if (!repoStatsEl) return;
+    const el = repoStatsEl.querySelector('[data-repo-stat="' + key + '"]');
+    if (!el) return;
+    if (!repoAnimated[key]) {
+      repoAnimated[key] = true;
+      animateStat(el, repoTotals[key]);
+    } else {
+      el.setAttribute("data-count", repoTotals[key]);
+      el.textContent = fmt(repoTotals[key]);
+    }
+  };
+  // Seed totals from the baked fallbacks so the counter is populated even
+  // before (or without) live GitHub responses.
+  if (repoStatsEl) {
+    repoCards.forEach(function (card) {
+      repoTotals.stars += readInt((card.querySelector("[data-repo-stars]") || {}).textContent);
+      repoTotals.forks += readInt((card.querySelector("[data-repo-forks]") || {}).textContent);
+    });
+    updateRepoStat("stars");
+    updateRepoStat("forks");
+    repoAnimated.stars = false;
+    repoAnimated.forks = false;
+  }
+
+  repoCards.forEach(function (card) {
     const slug = card.getAttribute("data-repo");
     card.classList.add("repo-loading");
+    const starsEl = card.querySelector("[data-repo-stars]");
+    const forksEl = card.querySelector("[data-repo-forks]");
+    const baseStars = readInt(starsEl && starsEl.textContent);
+    const baseForks = readInt(forksEl && forksEl.textContent);
     fetch("https://api.github.com/repos/" + slug, {
       headers: { Accept: "application/vnd.github+json" },
     })
@@ -205,11 +310,21 @@ $(document).ready(function () {
         return r.json();
       })
       .then(function (d) {
-        const starsEl = card.querySelector("[data-repo-stars]");
-        const forksEl = card.querySelector("[data-repo-forks]");
         const descEl = card.querySelector("[data-repo-desc]");
-        if (starsEl && typeof d.stargazers_count === "number") starsEl.textContent = fmt(d.stargazers_count);
-        if (forksEl && typeof d.forks_count === "number") forksEl.textContent = fmt(d.forks_count);
+        if (starsEl && typeof d.stargazers_count === "number") {
+          starsEl.textContent = fmt(d.stargazers_count);
+          if (repoStatsEl) {
+            repoTotals.stars += d.stargazers_count - baseStars;
+            updateRepoStat("stars");
+          }
+        }
+        if (forksEl && typeof d.forks_count === "number") {
+          forksEl.textContent = fmt(d.forks_count);
+          if (repoStatsEl) {
+            repoTotals.forks += d.forks_count - baseForks;
+            updateRepoStat("forks");
+          }
+        }
         if (descEl && d.description && !descEl.textContent.trim()) descEl.textContent = d.description;
 
         const langWrap = card.querySelector("[data-repo-lang]");
@@ -228,6 +343,32 @@ $(document).ready(function () {
         card.classList.remove("repo-loading");
       });
   });
+
+  // Trigger the count-up animation the first time the stats bar scrolls into view.
+  if (repoStatsEl) {
+    const runAnim = function () {
+      animateStat(repoStatsEl.querySelector('[data-repo-stat="stars"]'), repoTotals.stars);
+      animateStat(repoStatsEl.querySelector('[data-repo-stat="forks"]'), repoTotals.forks);
+      repoAnimated.stars = true;
+      repoAnimated.forks = true;
+    };
+    if ("IntersectionObserver" in window && !prefersReduced) {
+      const ro = new IntersectionObserver(
+        function (entries, obs) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              runAnim();
+              obs.disconnect();
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+      ro.observe(repoStatsEl);
+    } else {
+      runAnim();
+    }
+  }
 
   // live-enhance native GitHub profile cards
   document.querySelectorAll(".repo-user-card[data-user]").forEach(function (card) {
@@ -257,7 +398,7 @@ $(document).ready(function () {
   // spotlight cursor glow on cards and publication entries
   if (window.matchMedia("(pointer: fine)").matches && !prefersReduced) {
     const spotlightEls = document.querySelectorAll(
-      ".card, ol.bibliography > li, .research-stats .stat, .featured-posts .card, .repo-card, .repo-user-card"
+      ".card, ol.bibliography > li, .research-stats .stat, .repo-stats .stat, .featured-posts .card, .repo-card, .repo-user-card"
     );
     spotlightEls.forEach(function (el) {
       el.classList.add("has-spotlight");
@@ -269,20 +410,4 @@ $(document).ready(function () {
     });
   }
 
-  // subtle pointer-tilt on the hero portrait
-  const portrait = document.querySelector(".hero-portrait .portrait-frame");
-  if (portrait && !prefersReduced && window.matchMedia("(pointer: fine)").matches) {
-    const wrap = portrait.parentElement;
-    const maxTilt = 7;
-    wrap.addEventListener("mousemove", function (e) {
-      const r = portrait.getBoundingClientRect();
-      const px = (e.clientX - r.left) / r.width - 0.5;
-      const py = (e.clientY - r.top) / r.height - 0.5;
-      portrait.style.transform =
-        "perspective(800px) rotateY(" + px * maxTilt + "deg) rotateX(" + -py * maxTilt + "deg)";
-    });
-    wrap.addEventListener("mouseleave", function () {
-      portrait.style.transform = "";
-    });
-  }
 });
