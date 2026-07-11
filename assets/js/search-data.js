@@ -116,6 +116,9 @@ ninja.data = [{
           section: "News",},{id: "news-alphachimp-is-accepted-by-the-ijcv-5-year-impact-factor-15-5-2024",
           title: '🔥 AlphaChimp is accepted by the IJCV (5-year impact factor 15.5, 2024).',
           description: "",
+          section: "News",},{id: "news-reached-my-first-100-citations-on-semantic-scholar",
+          title: 'Reached my first 100 citations on Semantic Scholar 🎉.',
+          description: "",
           section: "News",},{
         id: 'social-email',
         title: 'email',
