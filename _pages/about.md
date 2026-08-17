@@ -24,7 +24,7 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I am currently a junior undergraduate in the **Tong Class** at [Yuanpei College](https://yuanpei.pku.edu.cn/), [Peking University](https://english.pku.edu.cn/). I have the privilege of being advised by [Prof. Yixin Zhu](https://yzhu.io/). I recently interned at [BIGAI](https://www.bigai.ai/), where I was advised by [Dr. Siyuan Huang](https://siyuanhuang.com). I am now a full-time **Applied Scientist Intern** at **Amazon FAR**.
+I am currently a junior undergraduate in the **Tong Class** at [Yuanpei College](https://yuanpei.pku.edu.cn/), [Peking University](https://english.pku.edu.cn/). I have the privilege of being advised by [Prof. Yixin Zhu](https://yzhu.io/). I recently interned at [BIGAI](https://www.bigai.ai/), where I was advised by [Dr. Siyuan Huang](https://siyuanhuang.com). I am now a full-time **Member of Technical Staff, Intern** at **Amazon FAR**, working closely with [Prof. C. Karen Liu](https://ckllab.stanford.edu/karen-liu) and [Prof. Guanya Shi](https://www.gshi.me/).
 
 My research interests lie at the intersection of **Robotics** 🤖, **Computer Vision** 👁️, and **Reinforcement Learning** 🎮, where I am driven to explore how intelligent systems perceive, learn, and interact with the world.
 
