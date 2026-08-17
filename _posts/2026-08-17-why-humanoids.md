@@ -8,13 +8,13 @@ categories: Robotics
 related_posts: false
 ---
 
-One question I keep coming back to is: *why humanoids?*
+*Why humanoids?*
 
-A common answer is that humanoids are universal platforms because our environments are designed for humans. Functionally, yes. But to me, this mostly answers *"can humanoids?"*, rather than *"why humanoids?"* It establishes feasibility, but not uniqueness.
+A common answer is that humanoids are universal platforms because our environments are designed for humans. Functionally, yes. To me, this probably answers *"can humanoids?"*, rather than *"why humanoids?"* It establishes feasibility, but not uniqueness.
 
 I think the more fundamental answer is *whole-body physicality*.
 
-Think about opening a heavy door. We do not simply pull the handle with an arm. We reposition our feet, shift our center of mass, lean with the body, brace against the ground, and transmit force through the entire kinematic chain. In other tasks, we may deliberately create contacts with the shoulder, knee, hip, or torso. *The body itself is part of the manipulation system.* By whole-body physicality, I mean that the entire body becomes part of the physical solution to a task. A humanoid does not merely manipulate with its hands while using its legs as a mobile base.
+Think about opening a heavy door. We do not simply pull the handle with an arm. We reposition our feet, lean with the body, and transmit force through the entire kinematic chain. In other tasks, we may deliberately create contacts with the shoulder, or torso etc. *The body itself is part of the manipulation system.* By whole-body physicality, I mean that the entire body becomes part of the physical solution to a task. A humanoid does not merely manipulate with its hands while using its legs as a mobile base.
 
 Many humanoid models are called whole-body because they generate or track motions over the entire body. But controlling more degrees of freedom is not, by itself, whole-body problem solving. If a high-level model specifies a whole-body reference and a low-level controller tracks it, then conceptually this is not very different from a mobile-base bimanual robot tracking a base trajectory and two arm trajectories.
 
