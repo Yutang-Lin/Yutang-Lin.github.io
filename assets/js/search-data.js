@@ -44,7 +44,18 @@ ninja.data = [{
               handler: () => {
                 window.location.href = "/books/";
               },
-            },{id: "post-notes-for-ajoint-methods",
+            },{id: "post-why-humanoids",
+        
+          title: "Why Humanoids?",
+        
+        description: "Whole-body physicality, not the humanoid form factor, is what makes humanoids fundamentally different — and why I think we do not yet have a general-purpose whole-body model.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/why-humanoids/";
+          
+        },
+      },{id: "post-notes-for-ajoint-methods",
         
           title: "Notes for Ajoint Methods",
         
