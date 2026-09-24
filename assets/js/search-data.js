@@ -130,6 +130,9 @@ ninja.data = [{
           section: "News",},{id: "news-reached-my-first-100-citations-on-semantic-scholar",
           title: 'Reached my first 100 citations on Semantic Scholar 🎉.',
           description: "",
+          section: "News",},{id: "news-lessmimic-is-accepted-by-neurips-2026",
+          title: '🔥 LessMimic is accepted by NeurIPS 2026.',
+          description: "",
           section: "News",},{
         id: 'social-email',
         title: 'email',
