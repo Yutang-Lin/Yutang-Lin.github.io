@@ -180,7 +180,7 @@
     },
     {
       "name": "LessMimic: Long-Horizon Humanoid Interaction with Unified Distance Field Representations",
-      "publisher": "arXiv",
+      "publisher": "Advances in Neural Information Processing Systems (NeurIPS) 2026",
       "releaseDate": "2026-02-26",
       "url": "https://lessmimic.github.io/",
       "summary": "A whole-body humanoid policy conditioned on distance-field geometric cues for reference-free interaction, long-horizon skill composition, and vision-only deployment without motion capture."
