@@ -44,7 +44,18 @@ ninja.data = [{
               handler: () => {
                 window.location.href = "/books/";
               },
-            },{id: "post-why-humanoids",
+            },{id: "post-where-is-rlvr-for-robotics-foundation-models",
+        
+          title: "Where Is RLVR for Robotics Foundation Models?",
+        
+        description: "Is the bottleneck toward a “GPT moment” in robotics whether physical intelligence can become cheap to sample and reliably verifiable?",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/rlvr-for-robotics-foundation-models/";
+          
+        },
+      },{id: "post-why-humanoids",
         
           title: "Why Humanoids?",
         
