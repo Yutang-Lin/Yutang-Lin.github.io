@@ -144,6 +144,9 @@ ninja.data = [{
           section: "News",},{id: "news-lessmimic-is-accepted-by-neurips-2026",
           title: '🔥 LessMimic is accepted by NeurIPS 2026.',
           description: "",
+          section: "News",},{id: "news-release-of-fiber-action-aligned-latent-planning-for-versatile-humanoid-loco-manipulation-read-the-arxiv-paper-and-try-the-interactive-simulation",
+          title: 'Release of FIBER: Action-Aligned Latent Planning for Versatile Humanoid Loco-Manipulation. Read the arXiv...',
+          description: "",
           section: "News",},{
         id: 'social-email',
         title: 'email',
