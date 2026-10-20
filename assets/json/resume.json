@@ -158,6 +158,13 @@
   ],
   "publications": [
     {
+      "name": "Action-Aligned Latent Planning for Versatile Humanoid Loco-Manipulation",
+      "publisher": "arXiv",
+      "releaseDate": "2026-10-17",
+      "url": "https://fiberaa.github.io/",
+      "summary": "FIBER unifies humanoid loco-manipulation through action-aligned latent policy projection and offline perceptive planning, with real-world box pickup, door opening, object grasping, and skill chaining."
+    },
+    {
       "name": "AlphaChimp: Tracking and Behavior Recognition of Chimpanzees",
       "publisher": "International Journal of Computer Vision (IJCV)",
       "releaseDate": "2024-10-22",
