@@ -27,7 +27,7 @@ repo_fallbacks:
     stars: 84
     forks: 1
   "Yutang-Lin/LessMimic":
-    description: "Official implementation of LessMimic: Long-Horizon Humanoid Interaction with Unified Distance Field Representations."
+    description: "Official implementation of LessMimic: Versatile Humanoid–Object Interaction with Unified Distance Field Representations."
     language: Python
     stars: 49
     forks: 1

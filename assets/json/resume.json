@@ -186,7 +186,7 @@
       "summary": "COLA is trained in a closed-loop environment with dynamic object interactions to predict object motion patterns and human intentions implicitly, enabling compliant collaboration to maintain load balance through coordinated trajectory planning. "
     },
     {
-      "name": "LessMimic: Long-Horizon Humanoid Interaction with Unified Distance Field Representations",
+      "name": "LessMimic: Versatile Humanoid–Object Interaction with Unified Distance Field Representations",
       "publisher": "Advances in Neural Information Processing Systems (NeurIPS) 2026",
       "releaseDate": "2026-02-26",
       "url": "https://lessmimic.github.io/",
