@@ -19,7 +19,7 @@
   "work": [
     {
       "name": "CoRe Lab, Peking University",
-      "position": "Student Researcher",
+      "position": "Research Intern",
       "url": "https://pku.ai/",
       "startDate": "2024-02-23",
       "endDate": "",
@@ -31,7 +31,7 @@
       "position": "Research Intern",
       "url": "https://www.bigai.ai/",
       "startDate": "2025-07-01",
-      "endDate": "",
+      "endDate": "2026-01-20",
       "summary": "",
       "highlights": ["Humanoids"]
     },
@@ -214,17 +214,12 @@
   "languages": [
     {
       "language": "Chinese",
-      "fluency": "Native",
-      "icon": ""
-    },
-    {
-      "language": "English",
       "fluency": "Fluent",
       "icon": ""
     },
     {
-      "language": "French",
-      "fluency": "Beginner",
+      "language": "English",
+      "fluency": "Fluent; TOEFL iBT 5.5/6.0 (2026 scale)",
       "icon": ""
     }
   ],

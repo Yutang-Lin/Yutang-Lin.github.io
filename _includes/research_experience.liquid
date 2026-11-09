@@ -1,0 +1,46 @@
+<section class="experience-section" id="research-experience" aria-labelledby="experience-title">
+  <h2 id="experience-title">Research experience</h2>
+  <div class="experience-heading-note">
+    <div class="experience-switch" role="group" aria-label="Research experience view">
+      <button type="button" data-experience-view="places" aria-controls="experience-places" aria-pressed="true">Places</button>
+      <button type="button" data-experience-view="focus" aria-controls="experience-focus" aria-pressed="false">Research focus</button>
+    </div>
+    <div class="experience-clock">
+      <span>NOW · BEIJING</span><time data-live-clock>UTC+8</time>
+    </div>
+  </div>
+  {% assign experience_views = 'places,focus' | split: ',' %}
+  {% for view in experience_views %}
+  <div id="experience-{{ view }}" class="experience-panel" {% if view == 'focus' %}hidden{% endif %}>
+  <div class="experience-scroll" tabindex="0" role="region" aria-label="{{ view | capitalize }} timeline">
+  <div class="experience-plot">
+  <div class="experience-axis" aria-hidden="true"><svg class="experience-lines" width="100%" height="88"></svg><canvas class="experience-live-ticks"></canvas><div class="experience-ticks"></div></div>
+  <ol class="experience-timeline">
+    {% if view == 'focus' %}
+    {% for focus in site.data.research_focus %}
+      <li tabindex="0" data-experience-start="{{ focus.start }}" data-experience-end="{{ focus.end }}" {% if focus.end == blank %}data-experience-ongoing="true"{% endif %}>
+        <div class="experience-date">{{ focus.start | date: '%b %Y' }} – {% if focus.end != blank %}{{ focus.end | date: '%b %Y' }}{% else %}Present{% endif %}</div>
+        <ul class="focus-topics" aria-label="Research directions">{% for topic in focus.topics %}<li>{{ topic }}</li>{% endfor %}</ul>
+      </li>
+    {% endfor %}
+    {% else %}
+    {% assign experiences = site.data.resume.work | sort: 'startDate' %}
+    {% for experience in experiences %}
+      <li tabindex="0" data-experience-start="{{ experience.startDate }}" data-experience-end="{{ experience.endDate }}" {% unless experience.name contains 'BIGAI' %}{% if experience.endDate == blank %}data-experience-ongoing="true"{% endif %}{% endunless %}>
+        <div class="experience-date">
+          {{ experience.startDate | date: '%b %Y' }}{% if experience.endDate != blank %} – {{ experience.endDate | date: '%b %Y' }}{% elsif experience.name contains 'BIGAI' %}{% else %} – Present{% endif %}
+        </div>
+        <div class="experience-detail">
+          <h3>{% if experience.url != blank %}<a href="{{ experience.url }}">{{ experience.name }}</a>{% else %}{{ experience.name }}{% endif %}</h3>
+          <p>{{ experience.position }}</p>
+        </div>
+      </li>
+    {% endfor %}
+    {% endif %}
+  </ol>
+  </div>
+  </div>
+  </div>
+  {% endfor %}
+  <p class="experience-scale-note">Continuous log-time lens · seconds → minutes → hours → days → years</p>
+</section>

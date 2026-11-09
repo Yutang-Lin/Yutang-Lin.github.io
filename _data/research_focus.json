@@ -1,0 +1,8 @@
+[
+  {"start": "2024-01-01", "end": "2024-10-01", "topics": ["Computer vision"]},
+  {"start": "2024-10-01", "end": "2025-06-01", "topics": ["Low-level control", "Teleoperation", "Sim-to-real gap"]},
+  {"start": "2025-06-01", "end": "2026-02-01", "topics": ["Loco-manipulation"]},
+  {"start": "2026-02-01", "end": "2026-06-01", "topics": ["Humanoid WAM"]},
+  {"start": "2026-06-01", "end": "2026-09-01", "topics": ["Representation for humanoid interaction"]},
+  {"start": "2026-09-01", "end": "", "topics": ["Human-level dexterity from human data", "Agentic humanoids"]}
+]

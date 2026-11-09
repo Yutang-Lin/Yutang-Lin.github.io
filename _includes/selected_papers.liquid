@@ -1,3 +1,7 @@
-<div class="publications">
-  {% bibliography --group_by none --query @*[selected=true]* %}
+<div class="publication-switch" role="group" aria-label="Filter publications">
+  <button type="button" data-publication-view="selected" aria-pressed="true" aria-controls="home-publications">Selected</button>
+  <button type="button" data-publication-view="all" aria-pressed="false" aria-controls="home-publications">All</button>
+</div>
+<div class="publications home-publications" id="home-publications" data-view="selected">
+  {% bibliography --group_by none %}
 </div>

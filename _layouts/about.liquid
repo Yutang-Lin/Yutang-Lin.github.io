@@ -1,22 +1,33 @@
 ---
 layout: default
 ---
-<div class="post">
+<div class="post personal-home">
+  <section class="atelier-cover" aria-labelledby="cover-name">
+    <canvas class="cover-landscape" aria-hidden="true"></canvas>
+    <p class="cover-kicker">YUTANG LIN · 林语瑭 <span>BEIJING, CHINA</span></p>
+    <div class="cover-main">
+      <p class="cover-intro">Hi, I'm</p>
+      <h1 id="cover-name">Yutang</h1>
+      <p class="cover-description">I'm a senior at Peking University working on robotics.<br>Outside the lab, you'll probably find me playing tennis or snowboarding.</p>
+      <div class="cover-links"><a href="#selected-research">Research ↗</a><a href="{{ '/assets/pdf/Yutang_Lin_CV.pdf' | relative_url }}" target="_blank" rel="noopener">My CV ↗</a><a href="mailto:yutang.lin@stu.pku.edu.cn">Say hello ↗</a></div>
+    </div>
+    <div class="cover-footer"><span>ROBOTICS / VISION / REINFORCEMENT LEARNING</span><a href="#about-me">Scroll to get to know me ↓</a></div>
+  </section>
   <!-- Custom hero -->
-  <section class="hero">
+  <section class="hero" id="about-me">
     <div class="hero-content">
       <div class="hero-eyebrow">
         <span class="hero-eyebrow-dot" aria-hidden="true"></span>
         <span class="hero-eyebrow-text">{{ page.subtitle | strip_html | strip }}</span>
       </div>
 
-      <h1 class="hero-title">
+      <h2 class="hero-title">
         {% if site.title == 'blank' %}
           {{ site.first_name }} {{ site.middle_name }}<span class="hero-accent">{{ site.last_name }}</span>
         {% else %}
           {{ site.title }}
         {% endif %}
-      </h1>
+      </h2>
 
       <div class="hero-subtitle">{{ content }}</div>
 
@@ -30,8 +41,8 @@ layout: default
         <a class="hero-btn primary no-underline-anim" href="{{ '/publications/' | relative_url }}">
           View publications <i class="ti ti-arrow-right"></i>
         </a>
-        <a class="hero-btn ghost no-underline-anim" href="{{ '/cv/' | relative_url }}">
-          Curriculum Vitae
+        <a class="hero-btn ghost no-underline-anim" href="{{ '/assets/pdf/Yutang_Lin_CV.pdf' | relative_url }}" target="_blank" rel="noopener">
+          My CV
         </a>
       </div>
     </div>
@@ -65,6 +76,7 @@ layout: default
   {% if ss_id %}
     <section
       class="research-stats reveal-on-scroll"
+      id="research-statistics"
       data-semantic-scholar-id="{{ ss_id }}"
       aria-label="Research statistics"
     >
@@ -98,6 +110,8 @@ layout: default
       </span>
     </section>
   {% endif %}
+
+  {% include research_experience.liquid %}
 
   <article>
     <!-- Milestone timeline -->
@@ -133,12 +147,21 @@ layout: default
 
     <!-- Selected papers -->
     {% if page.selected_papers %}
-      <h2 class="home-section-title">
-        <a href="{{ '/publications/' | relative_url }}">selected publications</a>
+      <h2 class="home-section-title" id="selected-research">
+        <a href="{{ '/publications/' | relative_url }}">publications</a>
       </h2>
       {% include selected_papers.liquid %}
     {% endif %}
 
+    <section class="off-duty" aria-labelledby="off-duty-title">
+      <p class="section-eyebrow">BEYOND THE LAB</p>
+      <h2 id="off-duty-title">When I'm <em>not working.</em></h2>
+      <p class="off-duty-intro">Two things I enjoy away from my desk.</p>
+      <div class="life-grid">
+        <div class="life-note"><span class="life-number">01 / ON COURT</span><div class="court-art" aria-hidden="true"><i></i></div><h3>Tennis</h3><p>I enjoy playing tennis and getting a little competitive on court.</p></div>
+        <div class="life-note"><span class="life-number">02 / ON THE MOUNTAIN</span><div class="mountain-art" aria-hidden="true"><i></i></div><h3>Snowboarding</h3><p>One of my favorite ways to spend time outside.</p></div>
+      </div>
+    </section>
     <!-- Social -->
     {% if page.social %}
       <div class="social">
