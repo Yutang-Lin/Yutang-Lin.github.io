@@ -167,6 +167,7 @@ body:has(.personal-home) > .container[role="main"] { width: 100%; max-width: non
 .publications ol.bibliography > li .links a.btn { padding: 3px 8px; margin: 0; min-height: 0; font-size: 9px; line-height: 1.4; border: 1px solid var(--global-divider-color); border-radius: 5px; color: var(--global-text-color-light); background: none; box-shadow: none; }
 .publications ol.bibliography > li .links a.btn:hover { color: var(--global-text-color); border-color: var(--global-theme-color); background: none; transform: none; }
 .publications ol.bibliography > li div.abstract { margin-top: 12px; font-size: 12px; line-height: 1.8; }
+.publications ol.bibliography .hidden:not(.open) { display: none; }
 .publications h2.bibliography { text-align: left; color: var(--global-text-color-light); font: 400 20px/1.3 var(--atelier-serif); border: none; padding: 0; margin: 26px 0 16px; }
 .publication-switch { display: flex; gap: 6px; margin: -8px 0 22px; }
 .publication-switch button { font: 400 12px/1.5 var(--global-font-sans); padding: 7px 18px; color: var(--global-text-color-light); border: 1px solid transparent; border-radius: 999px; background: transparent; cursor: pointer; }
@@ -233,45 +234,110 @@ body:has(.personal-home) > .container[role="main"] { width: 100%; max-width: non
 .personal-home .social { padding: 36px 0; border-top: 1px solid var(--global-divider-color); }
 footer.fixed-bottom { position: static; margin-top: 50px; border-top: 1px solid var(--global-divider-color); background: var(--global-bg-color); }
 body { padding-bottom: 0; }
+/* Collapse navigation before its links crowd the brand, including tablets. */
+@media(max-width: 991.98px) {
+  #navbar .navbar-toggler { min-width: 44px; min-height: 44px; padding: 10px; }
+  #navbar .navbar-collapse { max-height: calc(100dvh - 110px); overflow-y: auto; text-align: left !important; }
+  #navbar .navbar-nav { align-items: stretch; gap: 0; padding: 8px 0; }
+  #navbar .navbar-nav .nav-link { display: flex; align-items: center; min-height: 44px; padding: 10px 12px; font-size: 14px; }
+  #navbar #search-toggle, #navbar #light-toggle { min-width: 44px; min-height: 44px; text-align: left; }
+  #navbar .dropdown-menu { position: static; margin: 0 0 8px; }
+  .experience-plot { min-width: 0; }
+  body > .container[role="main"] > .row > .col-sm-3:has(#toc-sidebar) { display: none; }
+  body > .container[role="main"] > .row > .col-sm-9 { flex: 0 0 100%; max-width: 100%; }
+}
 @media(max-width: 768px) {
-  :root { --home-gutter: 24px; }
+  :root { --home-gutter: 20px; }
   body.fixed-top-nav { padding-top: 90px; }
+  #back-to-top { display: none; }
   #navbar, body:has(.personal-home) #navbar { width: calc(100% - 24px); top: 10px; border-radius: 14px; }
   #navbar > .container, body:has(.personal-home) #navbar > .container { padding: 10px 16px; min-height: 62px; }
   #navbar .navbar-brand { font-size: 18px; margin-right: 16px; }
-  #navbar .navbar-nav { gap: 0; align-items: stretch; }
-  #navbar .navbar-nav .nav-link { padding: 10px 8px; font-size: 12px; }
   body > .container[role="main"] { padding-top: 30px; }
-  .atelier-cover { padding: 24px var(--home-gutter); min-height: calc(95svh - 90px); }
-  .cover-main { padding: 50px 0 70px; }
-  .cover-main h1 { font-size: clamp(68px, 15vw, 112px); }
-  .cover-description { font-size: 14px; max-width: 340px; }
-  .cover-kicker { font-size: 8px; }
+  .post, .post article, .hero-content, .repo-card { min-width: 0; }
+  .post > .post-header > h1, .post > .header-bar > h1 { font-size: clamp(30px, 7vw, 42px); overflow-wrap: anywhere; }
+  .post article { overflow-wrap: break-word; }
+  .post article pre { max-width: 100%; overflow-x: auto; }
+  .post article > table { display: block; max-width: 100%; overflow-x: auto; }
+  .atelier-cover { padding: 22px var(--home-gutter); min-height: calc(100svh - 90px); }
+  .cover-main { padding: 40px 0 45px; }
+  .cover-main h1 { font-size: clamp(64px, 17vw, 112px); }
+  .cover-description { font-size: 15px; line-height: 1.8; max-width: 400px; }
+  .cover-kicker { font-size: 10px; letter-spacing: .1em; }
   .cover-kicker span { display: none; }
-  .cover-footer { font-size: 8px; }
-  .cover-footer > span { max-width: 145px; }
+  .cover-links { gap: 8px 20px; margin-top: 22px; }
+  .cover-links a { display: inline-flex; align-items: center; min-height: 44px; font-size: 13px; padding-bottom: 0; }
+  .cover-footer { font-size: 10px; align-items: flex-end; }
+  .cover-footer > span { max-width: 160px; }
+  .cover-footer a { min-height: 44px; display: inline-flex; align-items: center; text-align: right; }
   .cover-landscape { opacity: .55; }
-  .personal-home .hero { grid-template-columns: 1fr; gap: 30px; padding-top: 50px; }
-  .personal-home .hero-portrait { width: 65%; max-width: 240px; justify-self: center; margin: 0 auto; }
+  .personal-home .hero { grid-template-columns: minmax(0, 1fr); gap: 24px; padding: 42px 0 32px; }
+  .personal-home .hero-portrait { order: -1; width: 120px; max-width: 120px; justify-self: start; margin: 0; }
+  .personal-home .hero-title { font-size: 34px; }
+  .personal-home .hero-subtitle { font-size: 15px; line-height: 1.85; }
+  .personal-home .hero-eyebrow { font-size: 12px; }
+  .personal-home .hero-btn { min-height: 44px; font-size: 13px; padding: 10px 16px; }
+  .experience-section h2, .personal-home .home-section-title { font-size: 27px; margin-bottom: 20px; }
+  .experience-heading-note { align-items: flex-start; gap: 16px; }
+  .experience-switch { width: 100%; }
+  .experience-switch button, .publication-switch button { min-height: 44px; padding: 10px 16px; font-size: 13px; }
+  .experience-clock { width: auto; margin: 0; align-items: flex-start; flex-direction: row; flex-wrap: wrap; align-items: baseline; gap: 8px; }
+  .experience-clock time { font-size: 11px; }
+  .experience-scroll { overflow-x: visible; padding-bottom: 0; }
+  .experience-plot { min-width: 0; }
+  .experience-timeline { grid-template-columns: minmax(0, 1fr); gap: 10px; }
   .experience-timeline > li { padding: 18px; }
-  .experience-clock time { font-size: 10px; }
-  .research-stats .stat { min-height: 100px; padding: 20px 6px; }
-  .research-stats .stat-value { font-size: 26px; }
-  .research-stats .stat-label { font-size: 8px; }
+  .experience-date { font-size: 11px; }
+  .experience-detail h3 { font-size: 16px; }
+  .experience-detail p { font-size: 13px; }
+  .experience-scale-note { font-size: 10px; line-height: 1.7; }
+  .research-stats .stat { min-height: 116px; padding: 24px 6px; }
+  .research-stats .stat-value { font-size: 28px; }
+  .research-stats .stat-label { font-size: 10px; letter-spacing: .04em; }
+  .research-stats .stat-source { font-size: 9px; bottom: 6px; right: 10px; }
   .publications ol.bibliography > li { padding: 14px; }
   .publications ol.bibliography > li > .row { grid-template-columns: 120px minmax(0, 1fr); gap: 16px; }
   .publications ol.bibliography .preview { width: 120px; height: 85px; }
   .publications ol.bibliography > li .title { font-size: 14px; }
+  .publications ol.bibliography > li .author { font-size: 12px; }
+  .publications ol.bibliography > li .links a.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 36px; padding: 7px 10px; font-size: 11px; }
+  .publications ol.bibliography > li div.abstract { font-size: 14px; }
   .repo-grid, .life-grid { grid-template-columns: 1fr; }
   .repo-user-card { max-width: none; }
+  .repo-card { padding: 18px; min-height: 0; }
+  .repo-card .repo-card-desc, .repo-card .repo-card-meta { font-size: 13px; }
+  .cv .card { padding: 16px !important; }
+  .cv .card-title { font-size: 22px; }
+  .cv .list-group-item h6 { font-size: 14px !important; }
+  .cv .table-cv { font-size: 13px; }
+  .cv .table-cv-map, .cv .table-cv-map tbody { display: block; width: 100%; max-width: 100%; }
+  .cv .table-cv-map tr { display: grid; grid-template-columns: minmax(0, 1fr); gap: 3px; margin-bottom: 14px; }
+  .cv .table-cv-map td { display: block; padding: 0 !important; white-space: normal; overflow-wrap: anywhere; }
+  .cv .table-cv-map td:first-child { font-size: 12px; color: var(--global-text-color-light); }
+  .cv .table-cv-map td:last-child { font-size: 14px; line-height: 1.7; }
+  .post-header .cv-pdf-link { min-height: 44px; display: inline-flex; align-items: center; gap: 6px; }
+  .personal-home .social { padding: 28px 0; }
+  .personal-home .contact-icons a { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; }
 }
 @media(max-width: 480px) {
-  #experience-focus .experience-timeline > li { grid-template-columns: 115px minmax(0, 1fr); gap: 12px; padding: 12px; }
-  #experience-focus .experience-date { font-size: 9px; }
-  #experience-focus .focus-topics > li { font-size: 12px; }
-  .publications ol.bibliography > li > .row { grid-template-columns: 1fr; gap: 14px; }
-  .publications ol.bibliography .preview { width: 100%; height: 130px; }
-  .publications ol.bibliography .abbr { max-width: 230px !important; }
+  #experience-focus .experience-timeline > li { grid-template-columns: minmax(0, 1fr); gap: 6px; padding: 13px 14px; }
+  #experience-focus .experience-date { font-size: 11px; }
+  #experience-focus .focus-topics { gap: 4px 14px; }
+  #experience-focus .focus-topics > li { font-size: 14px; }
+  .publications ol.bibliography > li > .row { grid-template-columns: 80px minmax(0, 1fr); gap: 8px 12px; align-items: start; }
+  .publications ol.bibliography .row > [id] { display: contents; }
+  .publications ol.bibliography .row > [id] > * { grid-column: 2; min-width: 0; }
+  .publications ol.bibliography .row > .abbr { grid-column: 1; grid-row: 1 / 4; width: 80px; max-width: 80px !important; }
+  .publications ol.bibliography .preview { width: 80px; height: 72px; }
+  .publications ol.bibliography .abbr > abbr { top: 3px; left: 3px; font-size: 8px; padding: 3px 4px; }
+  .publications ol.bibliography > li .title { line-height: 1.5; margin: 0; }
+  .publications ol.bibliography > li .author { font-size: 11px; }
+  .publications ol.bibliography > li .periodical { font-size: 11px; margin: 0; }
+  .publications ol.bibliography .row > [id] > .links, .publications ol.bibliography .row > [id] > .abstract, .publications ol.bibliography .row > [id] > .bibtex, .publications ol.bibliography .row > [id] > .badges { grid-column: 1 / -1; }
+  .publications ol.bibliography > li .links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 4px; gap: 6px; }
+  .publications ol.bibliography > li .links a.btn { min-height: 44px; }
+  .post-header .cv-pdf-link { float: none !important; margin: 12px 0 0; width: fit-content; }
+  .post > .post-header > h1:has(.cv-pdf-link) { display: flex; flex-direction: column; }
   .repo-user-card { padding: 18px; gap: 12px; }
   .repo-user-card .repo-user-avatar { width: 44px; height: 44px; }
 }

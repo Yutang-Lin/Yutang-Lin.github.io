@@ -17,7 +17,7 @@
   if (!section) return;
   const panels = Array.from(section.querySelectorAll('.experience-panel'));
   const buttons = Array.from(section.querySelectorAll('[data-experience-view]'));
-  let hoveredCard = null, focusedCard = null;
+  let hoveredCard = null, focusedCard = null, touchedCard = null;
   let svg;
   const clock = section.querySelector('[data-live-clock]');
   const ns = 'http://www.w3.org/2000/svg';
@@ -26,7 +26,7 @@
   const day = 86400000;
   function highlight(panel) {
     const cards = Array.from(panel.querySelectorAll('[data-experience-start]'));
-    const active = cards.includes(hoveredCard) ? hoveredCard : cards.includes(focusedCard) ? focusedCard : null;
+    const active = cards.includes(hoveredCard) ? hoveredCard : cards.includes(touchedCard) ? touchedCard : cards.includes(focusedCard) ? focusedCard : null;
     cards.forEach(card => card.classList.toggle('is-highlighted', card === active));
     let band = panel.rangeBand;
     if (!band) {
@@ -114,16 +114,22 @@
     if (date !== today) { today=date; render(); }
   }
   buttons.forEach(button => button.addEventListener('click', () => {
-    hoveredCard = focusedCard = null;
+    hoveredCard = focusedCard = touchedCard = null;
     panels.forEach(panel => { panel.hidden = panel.id !== `experience-${button.dataset.experienceView}`; });
     buttons.forEach(other => other.setAttribute('aria-pressed', String(other === button)));
     render();
   }));
   panels.forEach(panel => panel.querySelectorAll('[data-experience-start]').forEach(card => {
-    card.addEventListener('pointerenter', () => { hoveredCard = card; highlight(panel); });
+    card.addEventListener('pointerenter', event => { if (event?.pointerType === 'touch') return; hoveredCard = card; highlight(panel); });
     card.addEventListener('pointerleave', () => { if (hoveredCard === card) hoveredCard = null; highlight(panel); });
     card.addEventListener('focusin', () => { focusedCard = card; highlight(panel); });
     card.addEventListener('focusout', event => { if (!card.contains(event.relatedTarget)) { focusedCard = null; highlight(panel); } });
+    card.addEventListener('pointerup', event => {
+      if (event.pointerType !== 'touch' || event.target.closest('a, button')) return;
+      touchedCard = touchedCard === card ? null : card;
+      focusedCard = null;
+      highlight(panel);
+    });
   }));
   const observer = new ResizeObserver(render);
   panels.forEach(panel => observer.observe(panel.querySelector('.experience-plot')));
@@ -150,7 +156,7 @@
     if (!flow?.panel.timeGeometry) return;
     const { canvas, ctx } = flow;
     const { width, right, maxAge, positionAge } = flow.panel.timeGeometry;
-    const ratio = Math.min(devicePixelRatio || 1, 1.5);
+    const ratio = Math.min(devicePixelRatio || 1, width < 600 ? 1.25 : 1.5);
     if (canvas.width !== Math.round(width * ratio)) { canvas.width = Math.round(width * ratio); canvas.height = Math.round(88 * ratio); }
     ctx.setTransform(ratio, 0, 0, ratio, 0, 0); ctx.clearRect(0, 0, width, 88);
     const color = getComputedStyle(section).getPropertyValue('--global-theme-color').trim() || '#d99c6f';
@@ -211,7 +217,7 @@
   const ripples = [];
   function resize() {
     width = cover.clientWidth; height = cover.clientHeight;
-    const ratio = Math.min(devicePixelRatio || 1, 1.5);
+    const ratio = Math.min(devicePixelRatio || 1, width < 600 ? 1.25 : 1.5);
     canvas.width = width * ratio; canvas.height = height * ratio;
     ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
     if (reduced.matches) draw(0);
@@ -224,11 +230,12 @@
     x += (pointerX - x) * ease; y += (pointerY - y) * ease;
     influence += ((hovering && !reduced.matches ? 1 : 0) - influence) * (1 - Math.exp(-delta / 100));
     while (ripples.length && time - ripples[0].time > 1800) ripples.shift();
-    const columns = width < 600 ? 72 : 120;
+    const columns = width < 600 ? 44 : 120;
+    const rows = width < 600 ? 36 : 55;
     // Batch equal-color dots into 32 paths instead of thousands of fill calls.
     const paths = Array.from({ length: 32 }, () => new Path2D());
-    for (let row = 0; row < 55; row++) {
-      const depth = row / 54;
+    for (let row = 0; row < rows; row++) {
+      const depth = row / (rows - 1);
       for (let col = 0; col < columns; col++) {
         const u = col / (columns - 1);
         const hill = Math.sin(u * 9 + depth * 4 + t) * .55 + Math.cos(u * 15 - depth * 7 + t * .65) * .25;
