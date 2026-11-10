@@ -1,5 +1,9 @@
 // Has to be in the head tag, otherwise a flicker effect will occur.
 
+// Start the redesigned site in dark mode, independent of the old site's stored
+// light/system default. Remember explicit choices made in the new design.
+const themeStorageKey = "atelier-theme-v1";
+
 // Toggle through light, dark, and system theme settings.
 let toggleThemeSetting = () => {
   let themeSetting = determineThemeSetting();
@@ -14,7 +18,7 @@ let toggleThemeSetting = () => {
 
 // Change the theme setting and apply the theme.
 let setThemeSetting = (themeSetting) => {
-  localStorage.setItem("theme", themeSetting);
+  localStorage.setItem(themeStorageKey, themeSetting);
 
   document.documentElement.setAttribute("data-theme-setting", themeSetting);
 
@@ -254,7 +258,7 @@ let transTheme = () => {
 // Determine the expected state of the theme toggle, which can be "dark", "light", or
 // "system". Default is "dark".
 let determineThemeSetting = () => {
-  let themeSetting = localStorage.getItem("theme");
+  let themeSetting = localStorage.getItem(themeStorageKey);
   if (themeSetting != "dark" && themeSetting != "light" && themeSetting != "system") {
     themeSetting = "dark";
   }
