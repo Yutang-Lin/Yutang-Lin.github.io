@@ -1,6 +1,6 @@
 <header class="site-header">
   <!-- Nav Bar -->
-  <nav id="navbar" class="site-nav navbar navbar-light navbar-expand-lg {% if site.navbar_fixed %}fixed-top{% else %}sticky-top{% endif %}" role="navigation" aria-label="Main navigation">
+  <nav id="navbar" class="site-nav navbar navbar-light {% if page.home_variant %}navbar-expand-xl{% else %}navbar-expand-lg{% endif %} {% if site.navbar_fixed %}fixed-top{% else %}sticky-top{% endif %}" role="navigation" aria-label="Main navigation">
     <div class="container">
         <a class="navbar-brand title font-weight-lighter" href="{{ site.baseurl }}/">
           {% if site.title == 'blank' %}
@@ -19,6 +19,11 @@
             {{- site.title -}}
           {% endif %}
         </a>
+      {% if page.home_variant == 'concise' %}
+        <a class="home-version-switch" href="{{ '/home-personal/' | relative_url }}">Switch to fancy version</a>
+      {% elsif page.home_variant == 'personal' %}
+        <a class="home-version-switch" href="{{ '/' | relative_url }}">Switch to concise version</a>
+      {% endif %}
       <!-- Navbar Toggle -->
       <button
         class="navbar-toggler collapsed ml-auto"

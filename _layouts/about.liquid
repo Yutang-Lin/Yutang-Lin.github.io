@@ -1,7 +1,8 @@
 ---
 layout: default
 ---
-<div class="post personal-home">
+<div class="post personal-home{% if page.home_variant == 'concise' %} home-concise{% endif %}">
+  {% if page.home_variant != 'concise' %}
   <section class="atelier-cover" aria-labelledby="cover-name">
     <canvas class="cover-landscape" aria-hidden="true"></canvas>
     <p class="cover-kicker">YUTANG LIN · 林语瑭 <span>BEIJING, CHINA</span></p>
@@ -9,7 +10,7 @@ layout: default
       <p class="cover-intro">Hi, I'm</p>
       <h1 id="cover-name">Yutang</h1>
       <p class="cover-description">I'm a senior at Peking University working on robotics.<br>Outside the lab, you'll probably find me playing tennis or snowboarding.</p>
-      <div class="cover-links"><a href="#selected-research">Research ↗</a><a href="{{ '/assets/pdf/Yutang_Lin_CV.pdf' | relative_url }}" target="_blank" rel="noopener">My CV ↗</a><a href="mailto:yutang.lin@stu.pku.edu.cn">Say hello ↗</a></div>
+      <div class="cover-links"><a href="#publications">Research ↗</a><a href="{{ '/assets/pdf/Yutang_Lin_CV.pdf' | relative_url }}" target="_blank" rel="noopener">My CV ↗</a><a href="mailto:yutang.lin@stu.pku.edu.cn">Say hello ↗</a></div>
     </div>
     <div class="cover-footer"><span>ROBOTICS / VISION / REINFORCEMENT LEARNING</span><a href="#about-me">Scroll to get to know me ↓</a></div>
   </section>
@@ -70,6 +71,26 @@ layout: default
       </div>
     {% endif %}
   </section>
+  {% else %}
+    <section class="concise-intro" aria-labelledby="intro-name">
+      <h1 id="intro-name">Yutang Lin <span lang="zh">林语瑭</span></h1>
+      <div class="concise-copy">
+        <div class="concise-biography">{{ content }}</div>
+        <nav class="intro-links" aria-label="Contact and profiles">
+          <a href="mailto:{{ site.data.socials.email }}">Email</a>
+          <a href="{{ '/assets/pdf/Yutang_Lin_CV.pdf' | relative_url }}" target="_blank" rel="noopener">My CV</a>
+          <a href="https://scholar.google.com/citations?user={{ site.data.socials.scholar_userid }}" target="_blank" rel="noopener">Scholar</a>
+          <a href="https://github.com/{{ site.data.socials.github_username }}" target="_blank" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+      {% if page.profile.image %}
+        <div class="concise-portrait">
+          {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
+          {% include figure.liquid loading="eager" path=profile_image_path sizes="(max-width: 600px) 88px, (max-width: 768px) 144px, 188px" alt="Yutang Lin" cache_bust=true %}
+        </div>
+      {% endif %}
+    </section>
+  {% endif %}
 
   <!-- Live research stats (Semantic Scholar) -->
   {% assign ss_id = site.data.socials.semanticscholar_id | split: '/' | last %}
@@ -111,17 +132,32 @@ layout: default
     </section>
   {% endif %}
 
-  {% include research_experience.liquid %}
-
   <article>
+    {% if page.home_publications %}
+      <section class="home-work" aria-labelledby="publications">
+        <h2 class="home-section-title" id="publications">
+          <a href="{{ '/publications/' | relative_url }}">publications</a>
+        </h2>
+        {% include home_publications.liquid %}
+      </section>
+    {% endif %}
+
+    {% if page.latest_posts and page.latest_posts.enabled %}
+      <h2 class="home-section-title">
+        <a href="{{ '/blog/' | relative_url }}">latest posts</a>
+      </h2>
+      {% include latest_posts.liquid %}
+    {% endif %}
+
     <!-- Milestone timeline -->
     {% if site.news != blank %}
       <h2 class="home-section-title">
         <a href="{{ '/news/' | relative_url }}">timeline</a>
       </h2>
+      <div class="home-news-scroll" role="region" aria-label="News timeline, scroll for earlier updates" tabindex="0">
       <ol class="timeline">
         {% assign timeline_news = site.news | sort: 'date' | reverse %}
-        {% for item in timeline_news limit: 7 %}
+        {% for item in timeline_news %}
           <li class="timeline-item reveal-on-scroll">
             <span class="timeline-marker" aria-hidden="true"></span>
             <time class="timeline-date">{{ item.date | date: '%b %Y' }}</time>
@@ -135,22 +171,7 @@ layout: default
           </li>
         {% endfor %}
       </ol>
-    {% endif %}
-
-    <!-- Latest posts -->
-    {% if page.latest_posts and page.latest_posts.enabled %}
-      <h2 class="home-section-title">
-        <a href="{{ '/blog/' | relative_url }}">latest posts</a>
-      </h2>
-      {% include latest_posts.liquid %}
-    {% endif %}
-
-    <!-- Selected papers -->
-    {% if page.selected_papers %}
-      <h2 class="home-section-title" id="selected-research">
-        <a href="{{ '/publications/' | relative_url }}">publications</a>
-      </h2>
-      {% include selected_papers.liquid %}
+      </div>
     {% endif %}
 
     <section class="off-duty" aria-labelledby="off-duty-title">

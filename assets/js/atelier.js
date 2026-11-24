@@ -1,3 +1,19 @@
+/* Keep news compact even when a narrow viewport wraps individual updates. */
+(() => {
+  const region = document.querySelector('.home-news-scroll');
+  if (!region) return;
+  const items = Array.from(region.querySelectorAll('.timeline-item'));
+  if (!items.length) return;
+  function sizeNews() {
+    const last = items[Math.min(5, items.length) - 1];
+    const height = last.offsetTop - items[0].offsetTop + last.offsetHeight + 4;
+    region.style.maxHeight = `${Math.min(height, Math.max(220, innerHeight * .55))}px`;
+  }
+  sizeNews();
+  window.addEventListener('resize', sizeNews, { passive: true });
+  if (document.fonts) document.fonts.ready.then(sizeNews);
+})();
+
 /* Publication filter: keep one bibliography so abstract and author controls
    retain unique IDs in both views. */
 (() => {
